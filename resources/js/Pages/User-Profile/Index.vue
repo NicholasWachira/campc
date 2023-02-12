@@ -1,0 +1,65 @@
+<template>
+    <Head title="Profile" />
+    <AuthenticatedLayout>
+        <div class="flex ml-10 mr-10 mt-2 text-white">
+            <div class="max-w-2xl w-full mx-auto text-white">
+                <div class="border rounded-lg p-5">
+                    <img src="https://picsum.photos/id/237/450/450" width="100" class="rounded-full mx-auto">
+                    <div class="flex justify-center items-center mt-3">
+                        <p class="text-white text-center text-lg font-bold">{{ user.name }}</p>
+                        <svg width="15px" height="15px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="verified" class="icon glyph ml-1"><path d="M21.6,9.84A4.57,4.57,0,0,1,21.18,9,4,4,0,0,1,21,8.07a4.21,4.21,0,0,0-.64-2.16,4.25,4.25,0,0,0-1.87-1.28,4.77,4.77,0,0,1-.85-.43A5.11,5.11,0,0,1,17,3.54a4.2,4.2,0,0,0-1.8-1.4A4.22,4.22,0,0,0,13,2.21a4.24,4.24,0,0,1-1.94,0,4.22,4.22,0,0,0-2.24-.07A4.2,4.2,0,0,0,7,3.54a5.11,5.11,0,0,1-.66.66,4.77,4.77,0,0,1-.85.43A4.25,4.25,0,0,0,3.61,5.91,4.21,4.21,0,0,0,3,8.07,4,4,0,0,1,2.82,9a4.57,4.57,0,0,1-.42.82A4.3,4.3,0,0,0,1.63,12a4.3,4.3,0,0,0,.77,2.16,4,4,0,0,1,.42.82,4.11,4.11,0,0,1,.15.95,4.19,4.19,0,0,0,.64,2.16,4.25,4.25,0,0,0,1.87,1.28,4.77,4.77,0,0,1,.85.43,5.11,5.11,0,0,1,.66.66,4.12,4.12,0,0,0,1.8,1.4,3,3,0,0,0,.87.13A6.66,6.66,0,0,0,11,21.81a4,4,0,0,1,1.94,0,4.33,4.33,0,0,0,2.24.06,4.12,4.12,0,0,0,1.8-1.4,5.11,5.11,0,0,1,.66-.66,4.77,4.77,0,0,1,.85-.43,4.25,4.25,0,0,0,1.87-1.28A4.19,4.19,0,0,0,21,15.94a4.11,4.11,0,0,1,.15-.95,4.57,4.57,0,0,1,.42-.82A4.3,4.3,0,0,0,22.37,12,4.3,4.3,0,0,0,21.6,9.84Zm-4.89.87-5,5a1,1,0,0,1-1.42,0l-3-3a1,1,0,1,1,1.42-1.42L11,13.59l4.29-4.3a1,1,0,0,1,1.42,1.42Z" style="fill:#EAEF4D"></path></svg>
+                    </div>
+                    <div class="flex justify-center gap-x-8">
+                        <p class="text-center mt-1 text-sm font-thin">@{{ user.institution }}</p>
+                        <p class="text-center mt-1 text-sm font-thin">@{{ user.username }}</p>
+                    </div>
+                    <p class="text-center mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labor deserunt mollit anim id est laborum.</p>
+                    <div class="flex justify-center mt-2 gap-x-20">
+                        <div class="flex items-center">
+                            <p class="font-bold">Followers </p>
+                            <p class="font-thin text-sm ml-2"> 120</p>
+                        </div>
+                        <div class="flex items-center">
+                            <p class="font-bold">Following </p>
+                            <p class="font-thin text-sm ml-2"> 10</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-center mt-3 gap-x-4">
+                        <Link href="#" class="text-gray-900 mt-1 text-sm bg-gray-100 font-bold px-5 py-2 rounded-full">follow</Link>
+                        <Link class="text-gray-900 mt-1 text-sm bg-gray-100 font-bold px-5 py-2 rounded-full" :href="route('user.profile.edit', user)">edit profile</Link>
+                    </div>
+                </div>
+                <!-- Timeline -->
+                <h1 class="text-center text-xl font-bold mt-5">Timeline</h1>
+                <div class="flex justify-center">
+                    <timeline :posts="user.posts"/>
+                </div>
+            </div>  
+        </div>
+    </AuthenticatedLayout>
+</template>
+
+<script>
+    import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+    import { Head, Link } from '@inertiajs/vue3';
+    import Timeline from '@/Components/Timeline.vue';
+    import Navbar from '@/Components/Navbar.vue';
+    import Trending from '@/Components/Trending.vue';
+
+    export default {
+        components: {
+            AuthenticatedLayout,
+            Head,
+            Link,
+            Timeline,
+            Navbar,
+            Trending
+        },
+        props: {
+            user: Object
+        }
+    }
+</script>
+
+
