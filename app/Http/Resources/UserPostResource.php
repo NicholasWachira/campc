@@ -18,6 +18,7 @@ class UserPostResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'username' => $this->username,
+            'isVerified' => $this->is_verified,
             'institution' => $this->institution->name,
             'email' => $this->email,
             'posts' => PostResource::collection($this->posts),

@@ -21,6 +21,7 @@ class PostResource extends JsonResource
             'uuid' => $this->uuid,
             'user' => new UserResource($this->user),
             'image' => $this->getFirstMediaUrl('post-image'),
+            'created_at' => $this->created_at->diffForHumans(),
         ];
     }
 }

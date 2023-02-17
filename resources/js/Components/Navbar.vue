@@ -93,7 +93,7 @@
                               <textarea class="bg-gray-900 text-white rounded-lg resize-none" rows="6" cols="50" v-model="form.title" required></textarea>
                             </div>
                             <div class="align-left p-2">
-                              <input type="file" class="text-white" @input="form.image = $event.target.files[0]">
+                              <input type="file" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" @input="form.image = $event.target.files[0]">
                             </div>
                             <div class="mt-4">
                               <button
@@ -148,7 +148,6 @@
 
             const submit = () => {
               form.post(route('post.store'))
-
               setTimeout(() => isOpen.value = false, 2000);
             }
 

@@ -20,6 +20,7 @@ class UserResource extends JsonResource
             'name' => $this->name,
             'username' => $this->username,
             'email' => $this->email,
+            'isVerified' => $this->is_verified,
             // 'posts' => PostResource::collection($this->posts),
         ];
     }
