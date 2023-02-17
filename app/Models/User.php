@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'username',
         'institution_id',
+        'is_verified',
         'email',
         'password',
     ];
