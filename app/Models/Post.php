@@ -28,4 +28,9 @@ class Post extends Model implements HasMedia
             $model->uuid = Str::uuid();
         });
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

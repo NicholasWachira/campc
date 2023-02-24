@@ -1,5 +1,5 @@
 <template>
-    <Head title="Home" />
+    <Head :title="post.title" />
     <AuthenticatedLayout>
         <div class="p-5">
             <!-- Navbar -->
@@ -17,47 +17,28 @@
                         <img :src="post.image" class="mt-3 rounded-2xl mx-auto">
                     </div>
                 <hr>
-                <div class="p-2 mt-3 flex">
-                    <input type="text" class="w-full bg-gray-900 rounded-full">
-                    <button class="px-3 py-1 bg-gray-200 text-gray-900 font-extrabold ml-3 rounded-full">Reply</button>
+                <div class="p-2 mt-3">
+                    <form @submit.prevent="submit">
+                        <div class="flex">
+                            <input type="text" class="w-full bg-gray-900 rounded-full" v-model="form.message">
+                            <button class="px-3 py-1 bg-gray-200 text-gray-900 font-extrabold ml-3 rounded-full" type="submit" :disabled="form.processing">Reply</button>
+                        </div>
+                        <div class="mt-3">
+                            <input type="file" class="block w-1/2 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" @input="form.image = $event.target.files[0]">
+                        </div>
+                    </form>
                 </div>
-                <div class="p-2">
+                <h1 class="mt-2 text-lg font-bold underline">Comments</h1>
+                <div class="p-2" v-for="(comment, index) in post.comments" :key="index">
                     <div class=" mt-3 flex items-center">
                         <img src="https://via.placeholder.com/50" class="rounded-full">
-                        <p class="ml-2 font-semibold">Nicholas Wachira</p>
-                        <p class="ml-2 text-sm font-thin">@Kanjox</p>
-                        <p class="text-xs ml-1 font-thin">2hr</p>
+                        <p class="ml-2 font-semibold">{{ comment.user.name }}</p>
+                        <p class="ml-2 text-sm font-thin">@{{ comment.user.username }}</p>
+                        <p class="text-xs ml-1 font-thin">{{ comment.created_at }}</p>
                     </div>
                     <div class="mt-2">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-                    </div>
-                </div>
-                <div class="p-2">
-                    <div class=" mt-3 flex items-center">
-                        <img src="https://via.placeholder.com/50" class="rounded-full">
-                        <p class="ml-2 font-semibold">Lavida Loka</p>
-                        <p class="ml-2 text-sm font-thin">@Kanjox</p>
-                        <p class="text-xs ml-1 font-thin">2hr</p>
-                    </div>
-                    <div class="mt-2">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-                    </div>
-                </div>
-                <div class="p-2">
-                    <div class=" mt-3 flex items-center">
-                        <img src="https://via.placeholder.com/50" class="rounded-full">
-                        <p class="ml-2 font-semibold">Iq Watson</p>
-                        <p class="ml-2 text-sm font-thin">@Kanjox</p>
-                        <p class="text-xs ml-1 font-thin">2hr</p>
-                    </div>
-                    <div class="mt-2">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+                        <p>{{ comment.message }}</p>
+                        <img :src="comment.image"  class="mt-2 rounded-2xl">
                     </div>
                 </div>
             </div>
@@ -72,7 +53,7 @@
     import Timeline from '@/Components/Timeline.vue';
     import Navbar from '@/Components/Navbar.vue';
     import Trending from '@/Components/Trending.vue';
-    import { Head, Link } from '@inertiajs/vue3';
+    import { Head, Link, useForm } from '@inertiajs/vue3';
 
     export default {
         components: {
@@ -80,10 +61,24 @@
             ApplicationLogo,
             Head,
             Link,
-            Timeline
+            Timeline,
+            useForm
         },
         props: {
             post: Object
+        },
+        setup(props)
+        {
+            const form = useForm({
+                message: '',
+                image: null
+            });
+
+            const submit = () => {
+                form.post(route('comment.store', props.post.uuid))
+            }
+
+            return { form, submit }
         }
     }
 </script>

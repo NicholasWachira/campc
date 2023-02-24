@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\UserNotificationsController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Foundation\Application;
@@ -44,10 +45,14 @@ Route::get('/notifications', [UserNotificationsController::class, 'index'])->nam
 Route::get('/u/{user:username}', [UserProfileController::class, 'index'])->name('user.profile');
 
 Route::get('/u/{user:username}/edit', [UserProfileController::class, 'edit'])->name('user.profile.edit');
+Route::patch('/u/{user:username}/update', [UserProfileController::class, 'update'])->name('user.profile.update');
+
 
 // Post
 Route::post('/post/create', [PostController::class, 'store'])->name('post.store');
 Route::get('/post/{uuid}', [PostController::class, 'show'])->name('post.show');
 
+// Comments
+Route::post('/post/{uuid}/comment', [CommentController::class, 'store'])->name('comment.store');
 
 require __DIR__.'/auth.php';
