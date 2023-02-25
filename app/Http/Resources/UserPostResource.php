@@ -21,7 +21,7 @@ class UserPostResource extends JsonResource
             'isVerified' => $this->is_verified,
             'institution' => $this->institution->name,
             'email' => $this->email,
-            'avatar' => $this->getFirstMediaUrl('avatar'),
+            'avatar' => $this->getFirstMediaUrl('avatar', 'thumb'),
             'posts' => PostResource::collection($this->posts),
         ];
     }

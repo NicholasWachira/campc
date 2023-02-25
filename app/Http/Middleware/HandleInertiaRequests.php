@@ -37,7 +37,7 @@ class HandleInertiaRequests extends Middleware
                 'user' => $request->user(),
             ],
             'users' => [
-                'user' => UserResource::collection(User::inRandomOrder()->take(10)->get()),
+                'user' => UserResource::collection(User::inRandomOrder()->take(8)->get()),
             ],
             'ziggy' => function () use ($request) {
                 return array_merge((new Ziggy)->toArray(), [
@@ -47,6 +47,3 @@ class HandleInertiaRequests extends Middleware
         ]);
     }
 }
-
-
-// where('username', '!=', auth()->user()->username)

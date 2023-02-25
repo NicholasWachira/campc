@@ -21,7 +21,7 @@ class UserResource extends JsonResource
             'username' => $this->username,
             'email' => $this->email,
             'isVerified' => $this->is_verified,
-            // 'posts' => PostResource::collection($this->posts),
+            'avatar' => $this->getFirstMediaUrl('avatar', 'thumb'),
         ];
     }
 }

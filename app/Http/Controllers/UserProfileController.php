@@ -24,16 +24,13 @@ class UserProfileController extends Controller
 
     public function update(Request $request, $username)
     {
-        dd($request->avatar);
+        $user = User::where('username', $username)->first();
 
         $validated = $request->validate([
             'name' => 'required',
             'username' => 'required',
             'email' => 'required|email',
-            'avatar' => 'nullable',
         ]);
-
-        $user = User::where('username', $username)->first();
 
         $user->update([
             'name'=> $validated['name'],
@@ -41,14 +38,21 @@ class UserProfileController extends Controller
             'email'=> $validated['email'],
         ]);
 
-        if ($user->hasMedia()) {
-            $user->clearMediaCollection();
-        }
-
-        $user->addMedia($request->avatar)->toMediaCollection('avatar');
-
         $user = new UserPostResource($user);
 
-        return inertia('User-Profile/Edit', compact('user'));
+        return redirect()->back();
+    }
+
+    public function updateAvatar(Request $request, $username)
+    {
+        $user = User::where('username', $username)->first();
+
+        $request->validate([
+            'avatar' => 'nullable',
+        ]);
+        
+        $user->clearMediaCollection('avatar');
+
+        $user->addMedia($request->avatar)->toMediaCollection('avatar');
     }
 }

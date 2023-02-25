@@ -45,7 +45,9 @@ Route::get('/notifications', [UserNotificationsController::class, 'index'])->nam
 Route::get('/u/{user:username}', [UserProfileController::class, 'index'])->name('user.profile');
 
 Route::get('/u/{user:username}/edit', [UserProfileController::class, 'edit'])->name('user.profile.edit');
-Route::patch('/u/{user:username}/update', [UserProfileController::class, 'update'])->name('user.profile.update');
+Route::post('/u/{user:username}/update', [UserProfileController::class, 'update'])->name('user.profile.update');
+
+Route::post('/u/{user:username}/update-avatar', [UserProfileController::class, 'updateAvatar'])->name('user.profile.update.avatar');
 
 
 // Post

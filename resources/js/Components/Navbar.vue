@@ -149,6 +149,7 @@
             const submit = () => {
               form.post(route('post.store'))
               setTimeout(() => isOpen.value = false, 2000);
+              form.reset()
             }
 
             function closeModal() {
