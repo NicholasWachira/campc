@@ -18,11 +18,11 @@
                     <div class="flex justify-center mt-2 gap-x-20">
                         <div class="flex items-center">
                             <p class="font-bold">Followers </p>
-                            <p class="font-thin text-sm ml-2"> 120</p>
+                            <p class="font-thin text-sm ml-2"> {{ user.followers }}</p>
                         </div>
                         <div class="flex items-center">
                             <p class="font-bold">Following </p>
-                            <p class="font-thin text-sm ml-2"> 10</p>
+                            <p class="font-thin text-sm ml-2">{{ user.following }}</p>
                         </div>
                     </div>
                     <div class="flex justify-center mt-3 gap-x-4">
@@ -35,6 +35,7 @@
                 <div class="flex justify-center">
                     <timeline :posts="user.posts"/>
                 </div>
+
             </div>  
         </div>
     </AuthenticatedLayout>
@@ -61,8 +62,6 @@
         props: {
             user: Object,
             follows: Boolean,
-            // followersCount: Object,
-            // followingCount: Object
         }
     }
 </script>

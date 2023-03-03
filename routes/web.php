@@ -43,6 +43,9 @@ Route::middleware('auth')->group(function () {
 
 });
 
+// Follow Users
+Route::get('/follow/users', [HomeController::class, 'users'])->name('register.follow.users');
+
 // User Notifications
 Route::get('/notifications', [UserNotificationsController::class, 'index'])->name('user.notifications');
 

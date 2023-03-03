@@ -10,8 +10,15 @@ class HomeController extends Controller
 {
     public function index()
     {
-    	$posts = PostResource::collection(Post::latest()->get());
+    	$user =  auth()->user()->following()->pluck('profiles.user_id');
+
+    	$posts = PostResource::collection(Post::whereIn('user_id', $user)->latest()->get());
 
     	return inertia('Dashboard', compact('posts'));
+    }
+
+    public function users()
+    {
+    	return inertia('Auth/FollowUsers');
     }
 }

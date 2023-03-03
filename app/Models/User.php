@@ -55,6 +55,8 @@ class User extends Authenticatable implements HasMedia
 
         static::created(function ($user){
             $user->profile()->create();
+
+            $user->following()->toggle($user->profile);
         });
     }
 

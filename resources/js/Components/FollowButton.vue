@@ -3,7 +3,7 @@
 </template>
 
 <script>
-	import { Link } from '@inertiajs/vue3';
+	import { Link, router } from '@inertiajs/vue3';
 	import axios from 'axios'
 
 	export default {
@@ -26,7 +26,8 @@
 			{
 				axios.post('/follow/' + this.userId)
 				.then(response => {
-					this.status =! this.status
+					this.status =! this.status;
+					router.reload();
 				})
 				.catch(errors => {
 					if (errors.response.status == 401 || errors.response.status == 500)
