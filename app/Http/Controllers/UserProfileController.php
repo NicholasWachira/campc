@@ -12,7 +12,17 @@ class UserProfileController extends Controller
     {
     	$user = new UserPostResource(User::where('username', $username)->first());
 
-    	return inertia('User-Profile/Index', compact('user'));
+        $u = User::with('profile')->where('username', $username)->first();
+
+        dd($u->profile->followers->count);
+
+        $follows = (auth()->user()) ? auth()->user()->following->contains($user->id) : false;
+
+        // $followersCount = $user->profile->followers->count();
+
+        // $followingCount =  $user->following->count();
+
+    	return inertia('User-Profile/Index', compact('user', 'follows'));
     }
 
     public function edit($username)

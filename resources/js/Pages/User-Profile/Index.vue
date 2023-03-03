@@ -26,8 +26,8 @@
                         </div>
                     </div>
                     <div class="flex justify-center mt-3 gap-x-4">
-                        <Link href="#" class="text-gray-900 mt-1 text-sm bg-gray-100 font-bold px-5 py-2 rounded-full">follow</Link>
-                        <Link class="text-gray-900 mt-1 text-sm bg-gray-100 font-bold px-5 py-2 rounded-full" :href="route('user.profile.edit', user)">edit profile</Link>
+                        <FollowButton :userId="user.id" :follows="follows" v-if="$page.props.users.user" v-show="user.id != $page.props.auth.user.id"/>
+                        <Link class="text-gray-900 mt-1 text-sm bg-gray-100 font-bold px-5 py-2 rounded-full" v-if="$page.props.users.user" v-show="user.id === $page.props.auth.user.id" :href="route('user.profile.edit', user)">edit profile</Link>
                     </div>
                 </div>
                 <!-- Timeline -->
@@ -44,6 +44,7 @@
     import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
     import { Head, Link } from '@inertiajs/vue3';
     import Timeline from '@/Components/Timeline.vue';
+    import FollowButton from '@/Components/FollowButton.vue';
     import Navbar from '@/Components/Navbar.vue';
     import Trending from '@/Components/Trending.vue';
 
@@ -54,10 +55,14 @@
             Link,
             Timeline,
             Navbar,
-            Trending
+            Trending,
+            FollowButton
         },
         props: {
-            user: Object
+            user: Object,
+            follows: Boolean,
+            // followersCount: Object,
+            // followingCount: Object
         }
     }
 </script>

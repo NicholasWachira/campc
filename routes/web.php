@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FollowsController;
 use App\Http\Controllers\UserNotificationsController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Foundation\Application;
@@ -36,6 +37,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // Follows Controller
+    Route::post('/follow/{user}', [FollowsController::class, 'store'])->name('follows.store');
+
 });
 
 // User Notifications

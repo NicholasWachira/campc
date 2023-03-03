@@ -49,6 +49,15 @@ class User extends Authenticatable implements HasMedia
         'email_verified_at' => 'datetime',
     ];
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($user){
+            $user->profile()->create();
+        });
+    }
+
     public function posts()
     {
         return $this->hasMany(Post::class)->latest();
@@ -64,5 +73,15 @@ class User extends Authenticatable implements HasMedia
         $this->addMediaConversion('thumb')
               ->fit(Manipulations::FIT_CROP, 300, 300)
               ->queued();
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
+
+    public function following()
+    {
+        return $this->belongsToMany(Profile::class);
     }
 }
