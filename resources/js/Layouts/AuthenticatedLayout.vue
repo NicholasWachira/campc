@@ -4,7 +4,7 @@
             <!-- App Logo -->
             <div class="flex justify-center items-center p-5">
                 <div class="max-w-7xl w-full">
-                    <Link :href="route('dashboard')">
+                    <Link :href="route('home')">
                         <div class="flex justify-center items-center gap-x-2 border-2 p-2 rounded-md text-white w-56 mx-auto hover:bg-gray-800 mt-5">
                             <p class="text-xs uppercase">Campus</p>
                             <p class="text-xs font-extrabold uppercase">Connect</p>

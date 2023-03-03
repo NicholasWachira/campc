@@ -21,17 +21,12 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+    return redirect()->route('home');
+})->name('homepage');
 
-Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -44,7 +39,7 @@ Route::middleware('auth')->group(function () {
 });
 
 // Follow Users
-Route::get('/follow/users', [HomeController::class, 'users'])->name('register.follow.users');
+Route::get('/follow/users', [HomeController::class, 'users'])->name('follow.users');
 
 // User Notifications
 Route::get('/notifications', [UserNotificationsController::class, 'index'])->name('user.notifications');

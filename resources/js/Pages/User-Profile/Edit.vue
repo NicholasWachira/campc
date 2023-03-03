@@ -13,7 +13,7 @@
                     <div class="text-red-700 px-2 mt-2">{{ form2.errors.avatar}}</div>
 
                     <div class="flex flex-col mt-5">
-                    <button class="bg-white text-gray-900 font-bold px-4 py-2 rounded-full" :disabled="form2.processing">Update Avatar</button>
+                    <button :class="{ 'opacity-25': form.processing }" class="bg-white text-gray-900 font-bold px-4 py-2 rounded-full" :disabled="form2.processing">Update Avatar</button>
                 </div>
                 </form>
 

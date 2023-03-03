@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Institution;
 use App\Http\Resources\InstitutionResource;
+use App\Http\Resources\UserResource;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -55,6 +56,10 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        $users = UserResource::collection(User::with('media')->get());
+
+        $follows = (auth()->user()) ? auth()->user()->following->contains($request->id) : false;
+
+        return redirect()->route('follow.users');
     }
 }
