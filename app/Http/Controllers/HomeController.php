@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Http\Resources\PostResource;
 use App\Http\Resources\UserResource;
+use App\Http\Resources\UserNotificationsResource;
 
 class HomeController extends Controller
 {
@@ -22,8 +23,6 @@ class HomeController extends Controller
     	else {
     		$posts = PostResource::collection(Post::latest()->get());	
     	}
-
-
 
     	return inertia('Dashboard', compact('posts'));
     }

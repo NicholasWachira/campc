@@ -10,11 +10,11 @@
                     <p class="ml-2 font-extrabold">Home</p>
                 </li>
                 </Link>
-                <Link :href="route('user.notifications')">
+                <Link :href="route('user.notifications')" v-if="$page.props.auth.user">
                     <li class="flex items-center hover:bg-gray-800 rounded-full p-2" href="#">
                         <svg fill="#ffffff" width="19px" height="19px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12,23a2,2,0,0,1-2-2h4A2,2,0,0,1,12,23ZM20,6a2,2,0,1,0-2,2A2,2,0,0,0,20,6Zm.707,11.293L19,15.586V10H17v6a1,1,0,0,0,.293.707l.293.293H6.414l.293-.293A1,1,0,0,0,7,16V10a4.98,4.98,0,0,1,5.912-4.912L14.5,3.5a.913.913,0,0,0-.168-.1A7,7,0,0,0,13,3.084V2a1,1,0,0,0-2,0V3.08A7,7,0,0,0,5,10v5.586L3.293,17.293A1,1,0,0,0,4,19H20a1,1,0,0,0,.707-1.707Z"/></svg>
                         <p class="ml-2 font-extrabold">Notifications</p>
-                        <p class="text-xs flex text-center items-center mb-4 bg-gray-300 rounded-full p-1 ml-1 h-5 w-5 text-gray-900 font-extrabold shrink-0">10</p>
+                        <p class="text-xs flex  justify-center text-center items-center mb-4 bg-gray-300 rounded-full p-1 ml-1 h-5 w-5 text-gray-900 font-extrabold shrink-0" v-if="$page.props.notifications.count > 0">{{ $page.props.notifications.count }}</p>
                     </li>
                 </Link>
                 <Link :href="route('login')" v-if="!$page.props.auth.user">

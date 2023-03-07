@@ -28,7 +28,7 @@
             Timeline
         },
         props: {
-            posts: Object
+            posts: Object,
         }
     }
 </script>

@@ -4,11 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Notifications\UserFollowNotification;
+use App\Http\Resources\UserResource;
 
 class FollowsController extends Controller
 {
     public function store(User $user)
     {
+    	// Notification::send($user, UserFollowNotification($user));
+
+    	$notifier = new UserResource(auth()->user());
+
+    	$user->notify(new UserFollowNotification($notifier));
+
     	return auth()->user()->following()->toggle($user->profile);
+
     }
 }

@@ -36,6 +36,9 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
+            'notifications' => [
+                'count' => (auth()->user()) ? auth()->user()->unreadNotifications()->count() : false
+            ],
             'users' => [
                 'user' => UserResource::collection(User::inRandomOrder()->take(8)->get()),
             ],
