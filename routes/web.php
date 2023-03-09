@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FollowsController;
+use App\Http\Controllers\VotingController;
 use App\Http\Controllers\UserNotificationsController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Foundation\Application;
@@ -38,6 +39,9 @@ Route::middleware('auth')->group(function () {
 
 	// User Notifications
 	Route::get('/notifications', [UserNotificationsController::class, 'index'])->name('user.notifications');
+
+	// Post Upvoting
+	Route::post('/p/{uuid}/upvote', [VotingController::class, 'upvotePost'])->name('post.upvote');
 });
 
 // Follow Users

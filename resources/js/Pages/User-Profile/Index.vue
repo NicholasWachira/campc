@@ -1,7 +1,7 @@
 <template>
     <Head :title="user.name" />
     <AuthenticatedLayout>
-        <div class="flex ml-10 mr-10 mt-2 text-white">
+        <div class="flex ml-10 mr-10 mt-5 text-white">
             <div class="max-w-2xl w-full mx-auto text-white">
                 <div class="border rounded-lg p-5">
                     <img :src="user.avatar" @error="$event.target.src='/image/abc.png'" width="100" heigth="100" class="rounded-full mx-auto">

@@ -21,6 +21,8 @@ class PostResource extends JsonResource
             'title' => $this->title,
             'uuid' => $this->uuid,
             'user' => new UserResource($this->user),
+            'voted' => $this->isUpvotedBy(auth()->user()),
+            'upvotes'=> $this->upvotersCountForHumans(),
             'comments' => CommentResource::collection($this->comments),
             'comments_count' => $this->comments->count(),
             'image' => $this->getFirstMediaUrl('post-image'),

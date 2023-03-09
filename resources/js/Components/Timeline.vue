@@ -1,5 +1,5 @@
 <template>
-	<div class="rounded-lg max-w-xl w-full h-screen overflow-y-scroll no-scrollbar">
+	<div class="rounded-lg max-w-lg w-full h-screen overflow-y-scroll no-scrollbar mb-12">
         <div v-for="(post, index) in posts" :key="index" class="mt-2 mb-1">
             <div class="flex items-center p-2">
                 <img :src="post.user.avatar"  @error="$event.target.src='/image/abc.png'" class="rounded-full ring ring-offset-2 ring-2 ring-yellow-500" width="50" height="50">
@@ -17,9 +17,8 @@
                 </Link>
             </div>
             <div class="flex items-center gap-x-4 p-2 ml-3">
-                <div class="mt-2 flex items-center gap-x-1">
-                    <svg fill="#ffffff" width="20px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.781 2.375c-.381-.475-1.181-.475-1.562 0l-8 10A1.001 1.001 0 0 0 4 14h4v7a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-7h4a1.001 1.001 0 0 0 .781-1.625l-8-10zM15 12h-1v8h-4v-8H6.081L12 4.601 17.919 12H15z"/></svg>
-                    <p class="text-sm font-bold mt-1">76</p>
+                <div>
+                    <UpvoteButton :post="post"/>
                 </div>
                 <Link :href="route('post.show', post.uuid)">
                     <div class="mt-2 flex items-center hover:text-gray-400">
@@ -36,11 +35,13 @@
 </template>
 
 <script>
+    import UpvoteButton from '@/Components/UpvoteButton.vue';
     import { Link } from '@inertiajs/vue3';
     
     export default {
         components: {
-            Link
+            Link,
+            UpvoteButton
         },
         props: {
             posts: {

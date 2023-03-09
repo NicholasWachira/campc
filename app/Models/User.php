@@ -11,10 +11,11 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\HasMedia;
 use Laravel\Sanctum\HasApiTokens;
+use LaravelInteraction\Vote\Concerns\Voter;
 
 class User extends Authenticatable implements HasMedia
 {
-    use HasApiTokens, HasFactory, Notifiable, InteractsWithMedia;
+    use HasApiTokens, HasFactory, Notifiable, InteractsWithMedia, Voter;
 
     /**
      * The attributes that are mass assignable.

@@ -8,10 +8,11 @@ use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
+use LaravelInteraction\Vote\Concerns\Voteable;
 
 class Post extends Model implements HasMedia
 {
-    use HasFactory, SoftDeletes, InteractsWithMedia;
+    use HasFactory, SoftDeletes, InteractsWithMedia, Voteable;
 
     protected $fillable = ['title', 'user_id', 'uuid'];
 
