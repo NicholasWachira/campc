@@ -26,8 +26,12 @@
                 <navbar/>
                     <slot />
                 <trending/>
-
             </main>
+
+            <div class="bg-gray-800 p-5 fixed bottom-20 right-8 text-white text-2xl font-extrabold h-10 w-10 lg:hidden flex justify-center items-center rounded-full text-center">
+                +
+            </div>
+
             <BottomNav/>
         </div>
     </div>
