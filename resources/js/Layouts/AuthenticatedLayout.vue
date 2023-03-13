@@ -25,7 +25,7 @@
                 <trending/>
             </main>
 
-            <div @click="openModal" class="bg-gray-800 p-5 fixed bottom-20 right-8 text-white text-2xl font-extrabold h-10 w-10 lg:hidden flex justify-center items-center rounded-full text-center">
+            <div @click="openModal" class="bg-gray-800 p-5 fixed bottom-20 right-8 text-white text-2xl font-extrabold h-10 w-10 lg:hidden flex justify-center items-center rounded-full text-center md:hidden  lg:hidden xl:hidden">
                 +
             </div>
 
@@ -87,7 +87,6 @@
                   </div>
                 </Dialog>
             </TransitionRoot>
-
             <BottomNav/>
         </div>
     </div>
@@ -131,6 +130,19 @@
               DialogTitle,
               useForm
         },
+        mounted()
+        {
+          // console.log(window.Echo)
+          window.Echo.channel('posts')
+          .listen('.PostUpvotesWereUpdated', (e) => {
+              // if (e.user_id === $page.props.auth.user.id) {
+                  
+              // }
+
+              console.log(e)
+              // e.upvotes = e.count
+          })
+        },
         setup()
         {
             const isOpen = ref(false);
@@ -142,7 +154,7 @@
 
             const submit = () => {
               form.post(route('post.store'))
-              setTimeout(() => isOpen.value = false, 2000);
+                setTimeout(() => isOpen.value = false, 2000);
               form.reset()
             }
 

@@ -40,7 +40,7 @@ class HandleInertiaRequests extends Middleware
                 'count' => (auth()->user()) ? auth()->user()->unreadNotifications()->count() : false
             ],
             'users' => [
-                'user' => UserResource::collection(User::inRandomOrder()->take(8)->get()),
+                'user' => UserResource::collection(User::inRandomOrder()->take(5)->get()),
             ],
             'ziggy' => function () use ($request) {
                 return array_merge((new Ziggy)->toArray(), [

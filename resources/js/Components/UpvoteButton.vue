@@ -32,8 +32,8 @@
 			{
 				axios.post('/p/'+ this.post.uuid + '/upvote')
 				.then(response => {
-					router.reload();
-					console.log('upvoted');
+					// router.reload();
+					// console.log('upvoted');
 				})
 				.catch(error => {
 					console.log(error)

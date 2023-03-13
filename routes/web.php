@@ -6,6 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FollowsController;
 use App\Http\Controllers\VotingController;
+use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\UserNotificationsController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Foundation\Application;
@@ -46,6 +47,9 @@ Route::middleware('auth')->group(function () {
 
 // Follow Users
 Route::get('/follow/users', [HomeController::class, 'users'])->name('follow.users');
+
+// Search Users
+Route::get('/explore/users', [ExploreController::class, 'searchUsers'])->name('explore.users');
 
 
 // User profile

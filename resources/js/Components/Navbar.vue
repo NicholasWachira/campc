@@ -17,6 +17,15 @@
                         <p class="text-xs flex  justify-center text-center items-center mb-4 bg-gray-300 rounded-full p-1 ml-1 h-5 w-5 text-gray-900 font-extrabold shrink-0" v-if="$page.props.notifications.count > 0">{{ $page.props.notifications.count }}</p>
                     </li>
                 </Link>
+                <Link :href="route('explore.users')">
+                    <li class="flex items-center hover:bg-gray-800 rounded-full p-2" href="#">
+                        <svg width="19px" height="19px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="10" cy="10" r="6" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M14.5 14.5L19 19" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <p class="ml-2 font-extrabold">Explore</p>
+                    </li>
+                </Link>
                 <Link :href="route('login')" v-if="!$page.props.auth.user">
                     <li class="flex items-center hover:bg-gray-800 rounded-full p-2" href="#">
                         <svg width="19px" height="19px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

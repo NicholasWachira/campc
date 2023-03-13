@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Post;
 use App\Notifications\UserUpvoteNotification;
+use App\Events\Post\PostWasUpvoted;
+// use App\Events\TestBroadcast;
 
 class VotingController extends Controller
 {
@@ -13,8 +15,25 @@ class VotingController extends Controller
     {
     	$post = Post::where('uuid', $uuid)->first();
 
-    	$upvote =  auth()->user()->upvote($post);
+        $user = auth()->user();
 
-    	return $post->user->notify(new UserUpvoteNotification($request->user(), $post));
+    	// if ($user->hasVoted($post)) {
+    	// 	$user->cancelVote($post);
+
+    	// 	return;
+    	// }
+    	// else {
+
+	    // 	$user->upvote($post);
+
+	    // 	if ($user->id === $post->user_id) {
+	    // 		return;
+	    // 	}
+	    // 	else {
+	    // 		return $post->user->notify(new UserUpvoteNotification($request->user(), $post));
+	    // 	}
+    	// }
+
+        broadcast(new PostWasUpvoted($user, $post));
     }
 }
