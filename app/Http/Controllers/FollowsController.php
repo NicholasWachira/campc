@@ -9,13 +9,9 @@ use App\Http\Resources\UserResource;
 
 class FollowsController extends Controller
 {
-    public function store(User $user)
+    public function store(User $user, Request $request)
     {
-    	// Notification::send($user, UserFollowNotification($user));
-
-    	$notifier = new UserResource(auth()->user());
-
-    	$user->notify(new UserFollowNotification($notifier));
+    	$user->notify(new UserFollowNotification($request->user()));
 
     	return auth()->user()->following()->toggle($user->profile);
 

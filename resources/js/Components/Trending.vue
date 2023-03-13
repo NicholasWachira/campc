@@ -1,5 +1,5 @@
 <template>
-	<div class="hidden md:block w-54">
+	<div class="hidden md:block w-54 mt-5">
         <div class="">
             <h1 class="font-bold">Trending</h1>    
             <ul class="mt-3 mb-5">

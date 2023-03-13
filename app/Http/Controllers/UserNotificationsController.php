@@ -9,7 +9,9 @@ class UserNotificationsController extends Controller
 {
     public function index()
     {
-    	$notifications =  UserNotificationsResource::collection(auth()->user()->unreadNotifications);
+    	$notifications =  auth()->user()->notifications;
+
+    	auth()->user()->unreadNotifications->markAsRead();
 
     	return inertia('User-Notifications/Index', compact('notifications'));
     }

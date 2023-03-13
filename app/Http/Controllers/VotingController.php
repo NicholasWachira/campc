@@ -5,13 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Post;
+use App\Notifications\UserUpvoteNotification;
 
 class VotingController extends Controller
 {
-    public function upvotePost($uuid)
+    public function upvotePost(Request $request, $uuid)
     {
     	$post = Post::where('uuid', $uuid)->first();
 
-    	return auth()->user()->upvote($post);
+    	$upvote =  auth()->user()->upvote($post);
+
+    	return $post->user->notify(new UserUpvoteNotification($request->user(), $post));
     }
 }

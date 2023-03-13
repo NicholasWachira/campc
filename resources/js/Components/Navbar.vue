@@ -1,5 +1,5 @@
 <template>
-	<div class="hidden md:block w-40">
+	<div class="hidden md:block w-40 mt-5">
         <div>
             <ul>
                 <Link :href="route('home')">
