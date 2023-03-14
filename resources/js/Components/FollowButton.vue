@@ -24,9 +24,10 @@
 		methods: {
 			followUser()
 			{
+				this.status =! this.status;
+				
 				axios.post('/follow/' + this.userId)
 				.then(response => {
-					this.status =! this.status;
 					router.reload();
 				})
 				.catch(errors => {

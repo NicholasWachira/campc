@@ -43,7 +43,7 @@
         },
         props: {
             users: Object,
-            follows: Object
+            follows: Boolean
         }
     }
 </script>

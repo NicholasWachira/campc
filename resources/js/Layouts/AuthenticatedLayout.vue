@@ -130,19 +130,6 @@
               DialogTitle,
               useForm
         },
-        mounted()
-        {
-          // console.log(window.Echo)
-          window.Echo.channel('posts')
-          .listen('.PostUpvotesWereUpdated', (e) => {
-              // if (e.user_id === $page.props.auth.user.id) {
-                  
-              // }
-
-              console.log(e)
-              // e.upvotes = e.count
-          })
-        },
         setup()
         {
             const isOpen = ref(false);

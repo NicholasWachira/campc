@@ -17,6 +17,24 @@ class VotingController extends Controller
 
         $user = auth()->user();
 
+
+        if ($user->hasVoted($post)) {
+            $user->cancelVote($post);
+
+            // broadcast(new PostWasUpvoted($user, $post));
+
+            return;
+        }
+        else {
+            $user->upvote($post);
+
+            // broadcast(new PostWasUpvoted($user, $post));
+
+            return;
+
+        }
+
+
     	// if ($user->hasVoted($post)) {
     	// 	$user->cancelVote($post);
 
@@ -30,10 +48,11 @@ class VotingController extends Controller
 	    // 		return;
 	    // 	}
 	    // 	else {
+                
+
 	    // 		return $post->user->notify(new UserUpvoteNotification($request->user(), $post));
 	    // 	}
-    	// }
 
-        broadcast(new PostWasUpvoted($user, $post));
+    	// }
     }
 }
