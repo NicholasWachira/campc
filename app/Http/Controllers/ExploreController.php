@@ -11,6 +11,7 @@ class ExploreController extends Controller
     public function searchUsers(Request $request)
     {
     	if (auth()->user()) {
+            
     		$users = UserResource::collection(User::where('id', '!=', auth()->user()->id)->take(20)->get());	
     	}
     	else {
@@ -24,6 +25,16 @@ class ExploreController extends Controller
 
     	$follows = (auth()->user()) ? auth()->user()->following->contains($ids->toArray()) : false;
 
-    	return inertia('Explore/Users', compact('users', 'follows'));
+    	return inertia('Explore/Users/Index', compact('users', 'follows'));
+    }
+
+    public function searchGroups(Request $request)
+    {
+        return inertia('Explore/Groups/Index');
+    }
+
+    public function showGroup(Request $request)
+    {
+        return inertia('Explore/Groups/Show');
     }
 }

@@ -3,9 +3,9 @@
     <AuthenticatedLayout>
         <div class="p-5">
             <!-- Navbar -->
-            <div class="text-white flex justify-between max-w-5xl mx-auto">
+            <div class="text-white flex justify-between max-w-5xl w-full mx-auto">
                 <!-- Timeline -->
-                <timeline :posts="posts"/>
+                <timeline :posts="posts" class="m-4 mb-12"/>
             </div>
         </div>
     </AuthenticatedLayout>

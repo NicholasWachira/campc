@@ -1,6 +1,6 @@
 <template>
-	<div class="rounded-lg max-w-lg w-full h-screen overflow-y-scroll no-scrollbar mb-12">
-        <div v-for="(post, index) in posts" :key="index" class="mt-2 mb-1">
+	<div class="rounded-lg max-w-lg w-full h-screen overflow-y-scroll no-scrollbar">
+        <div v-for="(post, index) in posts" :key="index" class="mt-2">
             <div class="flex items-center p-2">
                 <img :src="post.user.avatar"  @error="$event.target.src='/image/abc.png'" class="rounded-full ring ring-offset-2 ring-2 ring-yellow-500" width="40" height="40">
                 <Link class="font-extrabold text-md ml-3 hover:underline shrink-0" :href="route('user.profile', post.user)">{{ post.user.name }}</Link>
@@ -18,7 +18,7 @@
             </div>
             <div class="flex items-center gap-x-4 p-2 ml-3">
                 <div>
-                    <UpvoteButton :post="post" v-if="$page.props.auth.user"/>
+                    <UpvoteButton :post="post" v-show="$page.props.auth.user"/>
                 </div>
                 <Link :href="route('post.show', post.uuid)">
                     <div class="mt-2 flex items-center hover:text-gray-400">

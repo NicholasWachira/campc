@@ -50,6 +50,11 @@ Route::get('/follow/users', [HomeController::class, 'users'])->name('follow.user
 
 // Search Users
 Route::get('/explore/users', [ExploreController::class, 'searchUsers'])->name('explore.users');
+// Explore Groups
+Route::get('/explore/groups', [ExploreController::class, 'searchGroups'])->name('explore.groups');
+
+// Show Group
+Route::get('/explore/group/show', [ExploreController::class, 'showGroup'])->name('group.show');
 
 
 // User profile

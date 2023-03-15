@@ -1,5 +1,5 @@
 <template>
-	<button class="text-gray-900 mt-1 text-sm bg-gray-100 font-bold px-5 py-2 rounded-full hover:" @click="followUser" v-text="buttonText"></button>
+	<button class="hover:bg-red-200 text-gray-900 mt-1 text-sm bg-gray-100 font-bold px-5 py-2 rounded-full hover:" @click="followUser" v-text="buttonText"></button>
 </template>
 
 <script>

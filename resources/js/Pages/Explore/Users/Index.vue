@@ -1,5 +1,5 @@
 <template>
-    <Head title="Home" />
+    <Head title="Explore Users" />
     <AuthenticatedLayout>
         <div class="max-w-lg w-full">
             <!-- Explore -->
