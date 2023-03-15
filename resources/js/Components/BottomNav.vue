@@ -1,5 +1,5 @@
 <template>
-	<div class="bg-gray-700 p-5 fixed bottom-0 left-0 w-full h-12 md:hidden  lg:hidden xl:hidden flex justify-around">
+	<div class="bg-gray-700 p-5 fixed bottom-0 left-0 w-full h-14 md:hidden  lg:hidden xl:hidden flex justify-around">
 		<div>
 			<Link :href="route('home')">
 				<svg width="22px" height="22px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

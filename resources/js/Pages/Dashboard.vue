@@ -5,7 +5,7 @@
             <!-- Navbar -->
             <div class="text-white flex justify-between max-w-5xl w-full mx-auto">
                 <!-- Timeline -->
-                <timeline :posts="posts" class="m-4 mb-12"/>
+                <timeline :posts="posts" class="m-4"/>
             </div>
         </div>
     </AuthenticatedLayout>

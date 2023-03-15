@@ -73,6 +73,8 @@ Route::get('/post/{uuid}', [PostController::class, 'show'])->name('post.show');
 // Post Edit
 Route::get('/post/{uuid}/edit', [PostController::class, 'edit'])->name('post.edit');
 
+Route::patch('/post/{uuid}/update', [PostController::class, 'update'])->name('post.update');
+
 // Comments
 Route::post('/post/{uuid}/comment', [CommentController::class, 'store'])->name('comment.store');
 

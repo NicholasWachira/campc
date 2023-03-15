@@ -33,4 +33,15 @@ class PostController extends Controller
 
         return inertia('Post/Edit' ,compact('post'));
     }
+
+    public function update(PostStoreRequest $request, $uuid)
+    {
+        $post = Post::where('uuid', $uuid)->first();
+
+        $post->update([
+            'title' => $request->title 
+        ]);
+
+        return back();
+    }
 }

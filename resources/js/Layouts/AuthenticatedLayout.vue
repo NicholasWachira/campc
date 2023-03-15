@@ -25,7 +25,7 @@
                 <trending/>
             </main>
 
-            <div @click="openModal" class="bg-gray-800 p-5 fixed bottom-20 right-8 text-white text-2xl font-extrabold h-10 w-10 lg:hidden flex justify-center items-center rounded-full text-center md:hidden  lg:hidden xl:hidden">
+            <div @click="openModal" class="bg-gray-900 p-5 fixed bottom-20 right-8 text-white text-2xl font-extrabold h-10 w-10 lg:hidden flex justify-center items-center rounded-full text-center md:hidden  lg:hidden xl:hidden">
                 +
             </div>
 
