@@ -26,4 +26,11 @@ class PostController extends Controller
 
     	return inertia('Post/Show', compact('post'));
     }
+
+    public function edit($uuid)
+    {
+        $post = new PostResource(Post::where('uuid', $uuid)->first());
+
+        return inertia('Post/Edit' ,compact('post'));
+    }
 }

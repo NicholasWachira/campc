@@ -70,6 +70,9 @@ Route::post('/u/{user:username}/update-avatar', [UserProfileController::class, '
 Route::post('/post/create', [PostController::class, 'store'])->name('post.store');
 Route::get('/post/{uuid}', [PostController::class, 'show'])->name('post.show');
 
+// Post Edit
+Route::get('/post/{uuid}/edit', [PostController::class, 'edit'])->name('post.edit');
+
 // Comments
 Route::post('/post/{uuid}/comment', [CommentController::class, 'store'])->name('comment.store');
 

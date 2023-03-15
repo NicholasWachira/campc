@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+        <div class="min-h-screen bg-gray-100 dark:bg-gray-800">
             <!-- App Logo -->
             <div class="flex justify-center items-center pt-2">
                 <div class="max-w-7xl w-full">
