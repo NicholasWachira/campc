@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->text('title');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('group_id')->nullable()->references('id')->on('groups')->constrained();
             $table->string('uuid');
             $table->softDeletes();
             $table->timestamps();

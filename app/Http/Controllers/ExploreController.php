@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Group;
 use App\Http\Resources\UserResource;
+use App\Http\Resources\GroupResource;
 
 class ExploreController extends Controller
 {
@@ -30,11 +32,15 @@ class ExploreController extends Controller
 
     public function searchGroups(Request $request)
     {
-        return inertia('Explore/Groups/Index');
+        $groups = GroupResource::collection(Group::all());
+
+        return inertia('Explore/Groups/Index', compact('groups'));
     }
 
-    public function showGroup(Request $request)
+    public function showGroup(Request $request, $uuid)
     {
-        return inertia('Explore/Groups/Show');
+        $group = new GroupResource(Group::where('uuid', $uuid)->first());
+
+        return inertia('Explore/Groups/Show', compact('group'));
     }
 }

@@ -1,5 +1,5 @@
 <template>
-    <Head title="Explore Groups" />
+    <Head :title="group.name" />
     <AuthenticatedLayout>
         <div class="max-w-lg w-full m-4 rounded-2xl">
             <div class="h-screen overflow-y-scroll no-scrollbar m-4">
@@ -10,18 +10,16 @@
                                 <img src="" @error="$event.target.src='/image/abc.png'" width="70" height="70" class="rounded-full">
                             </div>
                             <div class="ml-7">
-                                <h1 class="text-center text-xl font-bold">Tech Gurus Multimedia</h1>
-                                <h1 class="text-xs">@techgurusmmu</h1>
+                                <h1 class="text-center text-xl font-bold">{{ group.name }}</h1>
+                                <h1 class="text-xs">@{{ group.username }}</h1>
                             </div>
                         </div>
                         <div class="mt-2 mb-2 flex justify-around">
                             <p class="text-gray-300">Members: 1000</p>
-                            <p class="text-gray-100">Location: Multimedia University</p>
+                            <p class="text-gray-100">Location: {{ group.institution }}</p>
                         </div>
                         <div class="mt-4 mb-2">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+                            <p>{{ group.description }}</p>
                         </div>
                         <hr>
 
@@ -52,6 +50,9 @@
             Link,
             Timeline,
             FollowButton
+        },
+        props: {
+            group: Object
         }
     }
 </script>

@@ -7,17 +7,20 @@
                 <div class="mx-auto">
                     <div class="p-2">
                         <h1 class="text-center uppercase">Groups</h1>
+                        <div class="flex justify-center mt-3">
+                            <Link :href="route('group.create')" class="bg-gray-500 p-2 rounded-full hover:bg-gray-900">Create Group</Link>
+                        </div>
                         <div class="p-2">
-                            <div class="flex mb-3">
+                            <div class="flex mb-3" v-for="(group, index) in groups" :key="index">
                                 <div class="mt-6">
                                     <img src="" @error="$event.target.src='/image/abc.png'" width="70" height="70" class="rounded-full">
                                 </div>
                                 <div class="ml-5 mt-3">
                                     <p class="text-lg font-bold hover:underline">
-                                        <Link :href="route('group.show')">Tech Gurus Multimedia Uni</Link>
+                                        <Link :href="route('group.show', group.uuid)">{{ group.name }}</Link>
                                     </p>
                                     <div>
-                                        <p class="text-gray-400">Memebers: 1000</p>
+                                        <p class="text-gray-400">@{{ group.username }}</p>
                                     </div>
                                     <Link class="flex items-center hover:bg-gray-800 mt-3 p-2 bg-gray-700 rounded-full w-32">
                                         <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -28,65 +31,6 @@
                                 </div>
                             </div>
                             <hr>
-                            <div class="flex mt-2 mb-3">
-                                <div class="mt-6">
-                                    <img src="" @error="$event.target.src='/image/abc.png'" width="70" height="70" class="rounded-full">
-                                </div>
-                                <div class="ml-5 mt-3">
-                                    <p class="text-lg font-bold hover:underline">
-                                        <Link :href="route('group.show')">Multimedia Sports</Link>
-                                    </p>
-                                    <div>
-                                        <p class="text-gray-400">Memebers: 12</p>
-                                    </div>
-                                    <Link class="flex items-center hover:bg-gray-800 mt-3 p-2 bg-gray-700 rounded-full w-32">
-                                        <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11 17C11 17.5523 11.4477 18 12 18C12.5523 18 13 17.5523 13 17V13H17C17.5523 13 18 12.5523 18 12C18 11.4477 17.5523 11 17 11H13V7C13 6.44771 12.5523 6 12 6C11.4477 6 11 6.44771 11 7V11H7C6.44772 11 6 11.4477 6 12C6 12.5523 6.44772 13 7 13H11V17Z" fill="#ffffff"/>
-                                        </svg>
-                                        <p>Join Group</p>
-                                    </Link>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="flex mt-2 mb-3">
-                                <div class="mt-6">
-                                    <img src="" @error="$event.target.src='/image/abc.png'" width="70" height="70" class="rounded-full">
-                                </div>
-                                <div class="ml-5 mt-3">
-                                    <p class="text-lg font-bold hover:underline">
-                                        <Link :href="route('group.show')">Entreprenuers Hub</Link>
-                                    </p>
-                                    <div>
-                                        <p class="text-gray-400">Memebers: 750</p>
-                                    </div>
-                                    <Link class="flex items-center hover:bg-gray-800 mt-3 p-2 bg-gray-700 rounded-full w-32">
-                                        <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11 17C11 17.5523 11.4477 18 12 18C12.5523 18 13 17.5523 13 17V13H17C17.5523 13 18 12.5523 18 12C18 11.4477 17.5523 11 17 11H13V7C13 6.44771 12.5523 6 12 6C11.4477 6 11 6.44771 11 7V11H7C6.44772 11 6 11.4477 6 12C6 12.5523 6.44772 13 7 13H11V17Z" fill="#ffffff"/>
-                                        </svg>
-                                        <p>Join Group</p>
-                                    </Link>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="flex mt-2 mb-3">
-                                <div class="mt-6">
-                                    <img src="" @error="$event.target.src='/image/abc.png'" width="70" height="70" class="rounded-full">
-                                </div>
-                                <div class="ml-5 mt-3">
-                                    <p class="text-lg font-bold hover:underline">
-                                        <Link :href="route('group.show')">Laravel Kenya</Link>
-                                    </p>
-                                    <div>
-                                        <p class="text-gray-400">Memebers: 254</p>
-                                    </div>
-                                    <Link class="flex items-center hover:bg-gray-800 mt-3 p-2 bg-gray-700 rounded-full w-32">
-                                        <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11 17C11 17.5523 11.4477 18 12 18C12.5523 18 13 17.5523 13 17V13H17C17.5523 13 18 12.5523 18 12C18 11.4477 17.5523 11 17 11H13V7C13 6.44771 12.5523 6 12 6C11.4477 6 11 6.44771 11 7V11H7C6.44772 11 6 11.4477 6 12C6 12.5523 6.44772 13 7 13H11V17Z" fill="#ffffff"/>
-                                        </svg>
-                                        <p>Join Group</p>
-                                    </Link>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -112,6 +56,9 @@
             Link,
             Timeline,
             FollowButton
+        },
+        props: {
+            groups: Object
         }
     }
 </script>

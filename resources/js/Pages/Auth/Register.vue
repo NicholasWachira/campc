@@ -58,7 +58,7 @@
                   </template>
                 </select>
 
-                <InputError class="mt-2" :message="form.errors.institution" />
+                <InputError class="mt-2" :message="form.errors.institution_id" />
             </div>
 
             <div class="mt-4">

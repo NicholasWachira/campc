@@ -87,4 +87,9 @@ class User extends Authenticatable implements HasMedia
     {
         return $this->belongsToMany(Profile::class);
     }
+
+    public function group()
+    {
+      return $this->hasMany(Group::class);
+    }
 }

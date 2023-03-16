@@ -14,11 +14,16 @@ class Post extends Model implements HasMedia
 {
     use HasFactory, SoftDeletes, InteractsWithMedia, Voteable;
 
-    protected $fillable = ['title', 'user_id', 'uuid'];
+    protected $fillable = ['title', 'user_id', 'group_id','uuid'];
 
     public function user()
     {
     	return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function group()
+    {
+        return $this->belongsTo(Group::class, 'group_id');
     }
 
     protected static function boot()

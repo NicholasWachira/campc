@@ -6,6 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FollowsController;
 use App\Http\Controllers\VotingController;
+use App\Http\Controllers\GroupController;
 use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\UserNotificationsController;
 use App\Http\Controllers\UserProfileController;
@@ -53,8 +54,13 @@ Route::get('/explore/users', [ExploreController::class, 'searchUsers'])->name('e
 // Explore Groups
 Route::get('/explore/groups', [ExploreController::class, 'searchGroups'])->name('explore.groups');
 
+// Create Group
+Route::get('/explore/group/create', [GroupController::class, 'create'])->name('group.create');
+
 // Show Group
-Route::get('/explore/group/show', [ExploreController::class, 'showGroup'])->name('group.show');
+Route::get('/explore/group/{uuid}', [ExploreController::class, 'showGroup'])->name('group.show');
+
+Route::post('/explore/group/store', [GroupController::class, 'store'])->name('group.store');
 
 
 // User profile
