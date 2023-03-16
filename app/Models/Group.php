@@ -3,12 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\Image\Manipulations;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Group extends Model
+class Group extends Model implements HasMedia
 {
-    use HasFactory;
+    use HasFactory, InteractsWithMedia;
 
     protected $fillable = ['name', 'username', 'uuid', 'owner_id', 'institution_id', 'description'];
 
@@ -34,5 +38,12 @@ class Group extends Model
     public function members()
     {
     	return $this->hasMany(Profile::class);
+    }
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')
+              ->fit(Manipulations::FIT_CROP, 300, 300)
+              ->queued();
     }
 }

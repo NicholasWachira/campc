@@ -76,8 +76,6 @@
             }
 
             const submit = () => {
-                // form.post(route('user.profile.update', props.user))
-
                 router.post(route('user.profile.update', props.user), {
                   _method: 'post',
                   name: form.name,

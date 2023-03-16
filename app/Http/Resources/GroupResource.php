@@ -19,7 +19,9 @@ class GroupResource extends JsonResource
             'name'=> $this->name,
             'username'=> $this->username,
             'description'=> $this->description,
+            'institution_id'=> $this->institution->id,
             'institution' => $this->institution->name,
+            'avatar' => $this->getFirstMediaUrl('avatar', 'thumb'),
         ];
     }
 }

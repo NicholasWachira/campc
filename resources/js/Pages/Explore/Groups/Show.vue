@@ -5,13 +5,18 @@
             <div class="h-screen overflow-y-scroll no-scrollbar m-4">
                 <div class="mx-auto">
                     <div class="">
-                        <div class="flex items-center p-2">
-                            <div>
-                                <img src="" @error="$event.target.src='/image/abc.png'" width="70" height="70" class="rounded-full">
+                        <div class="flex items-center justify-between p-2">
+                            <div class="flex items-center">
+                                <div>
+                                    <img :src="group.avatar" @error="$event.target.src='/image/abc.png'" width="70" height="70" class="rounded-full">
+                                </div>
+                                <div class="ml-4">
+                                    <h1 class="text-center text-xl font-bold">{{ group.name }}</h1>
+                                    <h1 class="text-xs">@{{ group.username }}</h1>
+                                </div>
                             </div>
                             <div class="ml-7">
-                                <h1 class="text-center text-xl font-bold">{{ group.name }}</h1>
-                                <h1 class="text-xs">@{{ group.username }}</h1>
+                                <Link :href="route('group.edit', group.uuid)" class="bg-gray-600 px-4 py-1 rounded-full hover:bg-gray-700">Edit Page</Link>
                             </div>
                         </div>
                         <div class="mt-2 mb-2 flex justify-around">

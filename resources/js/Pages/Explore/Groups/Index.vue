@@ -13,7 +13,7 @@
                         <div class="p-2">
                             <div class="flex mb-3" v-for="(group, index) in groups" :key="index">
                                 <div class="mt-6">
-                                    <img src="" @error="$event.target.src='/image/abc.png'" width="70" height="70" class="rounded-full">
+                                    <img :src="group.avatar" @error="$event.target.src='/image/abc.png'" width="70" height="70" class="rounded-full">
                                 </div>
                                 <div class="ml-5 mt-3">
                                     <p class="text-lg font-bold hover:underline">

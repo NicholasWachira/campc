@@ -51,16 +51,18 @@ Route::get('/follow/users', [HomeController::class, 'users'])->name('follow.user
 
 // Search Users
 Route::get('/explore/users', [ExploreController::class, 'searchUsers'])->name('explore.users');
+
 // Explore Groups
 Route::get('/explore/groups', [ExploreController::class, 'searchGroups'])->name('explore.groups');
-
 // Create Group
 Route::get('/explore/group/create', [GroupController::class, 'create'])->name('group.create');
-
 // Show Group
 Route::get('/explore/group/{uuid}', [ExploreController::class, 'showGroup'])->name('group.show');
-
+// Edit Group
+Route::get('/explore/group/{uuid}/edit', [GroupController::class, 'edit'])->name('group.edit');
+Route::post('/explore/group/{uuid}/update-avatar', [GroupController::class, 'updateAvatar'])->name('group.update.avatar');
 Route::post('/explore/group/store', [GroupController::class, 'store'])->name('group.store');
+
 
 
 // User profile
