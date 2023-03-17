@@ -35,6 +35,11 @@ class Group extends Model implements HasMedia
     	return $this->belongsTo(User::class, 'owner_id');
     }
 
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
     public function members()
     {
     	return $this->hasMany(Profile::class);

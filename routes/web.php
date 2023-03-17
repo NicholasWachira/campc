@@ -62,6 +62,8 @@ Route::get('/explore/group/{uuid}', [ExploreController::class, 'showGroup'])->na
 Route::get('/explore/group/{uuid}/edit', [GroupController::class, 'edit'])->name('group.edit');
 Route::post('/explore/group/{uuid}/update-avatar', [GroupController::class, 'updateAvatar'])->name('group.update.avatar');
 Route::post('/explore/group/store', [GroupController::class, 'store'])->name('group.store');
+// Post
+Route::post('/explore/group/post/create', [GroupController::class, 'createPost'])->name('group.post.create');
 
 
 
@@ -76,6 +78,7 @@ Route::post('/u/{user:username}/update-avatar', [UserProfileController::class, '
 
 // Post
 Route::post('/post/create', [PostController::class, 'store'])->name('post.store');
+
 Route::get('/post/{uuid}', [PostController::class, 'show'])->name('post.show');
 
 // Post Edit

@@ -28,8 +28,25 @@
                         </div>
                         <hr>
 
+                        <!-- Create Post -->
+
+                        <div class="border p-2 mt-2 rounded-lg">
+                            <div class="w-32 m-2 animate-pulse">
+                                <p class="bg-gray-900 px-4 rounded-full">Whats New</p>
+                            </div>
+                            <form @submit.prevent="submit">
+                                <textarea v-model="form.title" type="text" class="w-full bg-gray-800 rounded-md resize-none" rows="5"></textarea>
+                                <div class="flex items-center mt-4">
+                                    <input type="file" class="block w-64 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" @input="form.image = $event.target.files[0]">
+                                    <button type="submit" class="bg-gray-100 text-black font-extrabold ml-2 px-4 rounded-full shrink-0" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">Create Post</button>
+                                </div>  
+                            </form>  
+                        </div>
+
                         <div class="m-3">
                             <h1 class="text-center font-bold">Posts</h1>
+
+                            <timeline :posts="group.posts"/>
                         </div>
                     </div>
                 </div>
@@ -45,7 +62,7 @@
     import Timeline from '@/Components/Timeline.vue';
     import Navbar from '@/Components/Navbar.vue';
     import Trending from '@/Components/Trending.vue';
-    import { Head, Link } from '@inertiajs/vue3';
+    import { Head, Link, useForm } from '@inertiajs/vue3';
 
     export default {
         components: {
@@ -53,11 +70,27 @@
             ApplicationLogo,
             Head,
             Link,
+            useForm,
             Timeline,
             FollowButton
         },
         props: {
             group: Object
+        },
+        setup(props)
+        {
+            const form = useForm({
+                group_id: props.group.id,
+                title: '',
+                image: null
+            });
+
+            const submit = () => {
+              form.post(route('group.post.create'))
+              form.reset();
+            }
+
+            return { form, submit }
         }
     }
 </script>

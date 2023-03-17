@@ -16,11 +16,17 @@
                                     <img :src="group.avatar" @error="$event.target.src='/image/abc.png'" width="70" height="70" class="rounded-full">
                                 </div>
                                 <div class="ml-5 mt-3">
-                                    <p class="text-lg font-bold hover:underline">
-                                        <Link :href="route('group.show', group.uuid)">{{ group.name }}</Link>
-                                    </p>
-                                    <div>
-                                        <p class="text-gray-400">@{{ group.username }}</p>
+                                    <div class="flex">
+                                        <div>
+                                            <p class="text-lg font-bold hover:underline">
+                                            <Link :href="route('group.show', group.uuid)">{{ group.name }}</Link></p>
+                                            <p class="text-gray-400">@{{ group.username }}</p>
+                                        </div>
+                                        <div class="ml-2 mt-1">
+                                            <svg width="20px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#D3D3D3">
+                                              <path stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.5 12.5L11 15l4.5-4.5m-.595-5.512l-.48-.659a3 3 0 00-4.85 0l-.48.659-.804-.127a3 3 0 00-3.43 3.43l.127.804-.659.48a3 3 0 000 4.85l.659.48-.127.804a3 3 0 003.43 3.43l.804-.127.48.659a3 3 0 004.85 0l.48-.659.804.127a3 3 0 003.43-3.43l-.127-.804.659-.48a3 3 0 000-4.85l-.659-.48.127-.804a3 3 0 00-3.43-3.43l-.804.127z"/>
+                                            </svg>
+                                        </div>
                                     </div>
                                     <Link class="flex items-center hover:bg-gray-800 mt-3 p-2 bg-gray-700 rounded-full w-32">
                                         <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

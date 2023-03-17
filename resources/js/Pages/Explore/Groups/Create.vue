@@ -4,19 +4,6 @@
         <div class="flex justify-center mt-2 text-white max-w-lg w-full">
             <div class="border p-6 rounded-lg max-w-md w-full ml-6 mr-6">
             <h1 class="text-center mb-3 text-2xl font-bold">Create Group</h1>
-                
-                <form>
-                    <img src="" @error="$event.target.src='/image/abc.png'" class="mx-auto rounded-full" width="100" height="100">
-                    <div class="flex justify-center">
-                        <input type="file" class="mt-2 mb-2 border rounded-md" required="">
-                    </div>
-                    <!-- <div class="text-red-700 px-2 mt-2">{{ form2.errors.avatar}}</div> -->
-
-                    <div class="flex flex-col mt-5">
-                    <button class="bg-white text-gray-900 font-bold px-4 py-2 rounded-full">Update Group Avatar</button>
-                </div>
-                </form>
-
               <form @submit.prevent="submit">
                 <div class="flex flex-col mt-3">
                     <label class="mb-2 text-center">Name</label>

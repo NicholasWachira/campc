@@ -1,5 +1,5 @@
 <template>
-	<div class="rounded-lg max-w-lg w-full h-screen overflow-y-scroll no-scrollbar">
+	<div class="rounded-lg max-w-lg w-full h-screen overflow-y-scroll no-scrollbar mb-12 lg:mb-0">
         <div v-for="(post, index) in posts" :key="index" class="mt-2">
             <div class="flex items-center justify-between p-2">
                 <div class="flex items-center">
@@ -93,6 +93,9 @@
                     <p class="ml-2 text-sm mt-1">{{ post.comments_count }}</p>
                     </div>
                 </Link>
+                  <div >
+                    <p class="text-gray-400 uppercase text-xs mt-3" v-if="post.group">Posted on <Link :href="route('group.show', post.group.uuid)" class="font-bold">{{ post.group.name }}</Link></p>
+                  </div>
                 </div>
                 <hr>
             </div>

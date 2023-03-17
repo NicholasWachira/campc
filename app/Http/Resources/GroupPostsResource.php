@@ -3,8 +3,9 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\PostResource;
 
-class GroupResource extends JsonResource
+class GroupPostsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,7 +15,7 @@ class GroupResource extends JsonResource
      */
     public function toArray($request)
     {
-        return[
+        return [
             'id'=> $this->id,
             'uuid' => $this->uuid,
             'name'=> $this->name,
@@ -23,6 +24,7 @@ class GroupResource extends JsonResource
             'institution_id'=> $this->institution->id,
             'institution' => $this->institution->name,
             'avatar' => $this->getFirstMediaUrl('avatar', 'thumb'),
+            'posts' => PostResource::collection($this->posts),
         ];
     }
 }

@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Group;
 use App\Http\Resources\UserResource;
 use App\Http\Resources\GroupResource;
+use App\Http\Resources\GroupPostsResource;
 
 class ExploreController extends Controller
 {
@@ -39,7 +40,7 @@ class ExploreController extends Controller
 
     public function showGroup(Request $request, $uuid)
     {
-        $group = new GroupResource(Group::where('uuid', $uuid)->first());
+        $group = new GroupPostsResource(Group::where('uuid', $uuid)->first());
 
         return inertia('Explore/Groups/Show', compact('group'));
     }

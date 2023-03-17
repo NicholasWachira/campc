@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\UserResource;
+use App\Http\Resources\GroupResource;
 use App\Http\Resources\CommentResource;
 
 class PostResource extends JsonResource
@@ -20,6 +21,7 @@ class PostResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'uuid' => $this->uuid,
+            'group' => ($this->group_id) ? new GroupResource($this->group) : false,
             'user' => new UserResource($this->user),
             'voted' => $this->isUpvotedBy(auth()->user()),
             'upvotes'=> $this->upvotersCountForHumans(),

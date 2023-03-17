@@ -33,7 +33,7 @@ class GroupController extends Controller
             'owner_id' => auth()->user()->id
         ]);
 
-        return inertia('Explore/Groups/Index');
+        return redirect()->route('Explore/Groups/Index');
     }
 
     public function edit($uuid)
@@ -58,5 +58,25 @@ class GroupController extends Controller
         $group->addMedia($request->avatar)->toMediaCollection('avatar');
 
         return back();
+    }
+
+    public function createPost(Request $request)
+    {
+        $data = $request->validate([
+            'title'=> 'required',
+            'image'=> 'nullable|image',
+            'group_id'=> 'required',
+        ]);
+
+        $post = auth()->user()->posts()->create([
+            'title'=> $data['title'],
+            'group_id' => $data['group_id']
+        ]);
+        
+        if ($request->image) {
+            $post->addMedia($request->image)->toMediaCollection('post-image');
+        }
+
+        return redirect()->back();
     }
 }
