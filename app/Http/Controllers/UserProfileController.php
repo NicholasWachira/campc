@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Resources\UserPostResource;
+use Inertia\Inertia;
 
 class UserProfileController extends Controller
 {
@@ -42,7 +43,7 @@ class UserProfileController extends Controller
 
         $user = new UserPostResource($user);
 
-        return redirect()->back();
+        return to_route('user.profile', compact('user'));
     }
 
     public function updateAvatar(Request $request, $username)

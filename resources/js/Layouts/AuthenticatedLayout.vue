@@ -59,12 +59,6 @@
                         <DialogPanel
                           class="w-full max-w-lg transform overflow-hidden rounded-2xl bg-gray-800 p-6 align-middle shadow-xl transition-all"
                         >
-                          <DialogTitle
-                            as="h3"
-                            class="text-lg font-medium leading-6 text-white"
-                          >
-                            Tweet
-                          </DialogTitle>
                           <form @submit.prevent="submit">
                             <div class="mt-1">
                               <textarea class="bg-gray-900 text-white rounded-lg resize-none" rows="6" cols="40" v-model="form.title" required></textarea>

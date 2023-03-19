@@ -13,7 +13,7 @@
             </div>
                 <div class="mt-2 mb-1">
                     <div class="mb-5">
-                        <p class="pl-2 pr-2">{{ post.title }}</p>
+                        <p class="pl-2 pr-2 whitespace-pre-wrap">{{ post.title }}</p>
                         <img :src="post.image" class="mt-3 rounded-2xl mx-auto">
                     </div>
                 <div class="p-2 mt-3">

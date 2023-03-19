@@ -15,7 +15,7 @@
                 <div class="mx-auto">
                     <div v-for="(group, index) in groups" :key="index" class="p-2">
                         <div class="p-2">
-                            <div class="flex justify-between items-center">
+                            <div class="flex justify-between">
                                 <div class="flex items-center">
                                     <img :src="group.avatar" @error="$event.target.src='/image/abc.png'" width="50" height="50" class="rounded-full">
                                     <p class="ml-2 text-md hover:underline shrink-0"><Link :href="route('group.show', group.uuid)">{{ group.name }}</Link></p>
@@ -26,7 +26,7 @@
                                     <p class="ml-2 text-sm">@{{ group.username }}</p>
                                 </div>
                                 <div>
-                                        <JoinGroupButton :groupId="group.id" :member="group.member"/>
+                                    <JoinGroupButton :groupId="group.id" :member="group.member"/>
                                 </div>
                             </div>
                         </div>
