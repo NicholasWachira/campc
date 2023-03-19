@@ -6,9 +6,8 @@
                 <!-- <input type="search" class="w-full bg-gray-900 rounded-full outline-none"> -->
                 <div class="mx-auto">
                     <div class="p-2">
-                        <h1 class="text-center uppercase">Groups</h1>
                         <div class="flex justify-center mt-3">
-                            <Link :href="route('group.create')" class="bg-gray-500 p-2 rounded-full hover:bg-gray-900">Create Group</Link>
+                            <Link :href="route('group.create')" class="bg-gray-500 px-4 py-1 rounded-full hover:bg-gray-900">Create Group</Link>
                         </div>
                         <div class="p-2">
                             <div class="flex mb-3" v-for="(group, index) in groups" :key="index">
@@ -28,12 +27,7 @@
                                             </svg>
                                         </div>
                                     </div>
-                                    <Link class="flex items-center hover:bg-gray-800 mt-3 p-2 bg-gray-700 rounded-full w-32">
-                                        <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11 17C11 17.5523 11.4477 18 12 18C12.5523 18 13 17.5523 13 17V13H17C17.5523 13 18 12.5523 18 12C18 11.4477 17.5523 11 17 11H13V7C13 6.44771 12.5523 6 12 6C11.4477 6 11 6.44771 11 7V11H7C6.44772 11 6 11.4477 6 12C6 12.5523 6.44772 13 7 13H11V17Z" fill="#ffffff"/>
-                                        </svg>
-                                        <p>Join Group</p>
-                                    </Link>
+                                    <JoinGroupButton :groupId="group.id" :member="group.member"/>
                                 </div>
                             </div>
                             <hr>
@@ -47,6 +41,7 @@
 
 <script>
     import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+    import JoinGroupButton from '@/Components/JoinGroupButton.vue';
     import FollowButton from '@/Components/FollowButton.vue';
     import ApplicationLogo from '@/Components/ApplicationLogo.vue';
     import Timeline from '@/Components/Timeline.vue';
@@ -61,7 +56,8 @@
             Head,
             Link,
             Timeline,
-            FollowButton
+            FollowButton,
+            JoinGroupButton
         },
         props: {
             groups: Object

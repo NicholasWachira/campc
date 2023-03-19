@@ -23,7 +23,7 @@ class PostResource extends JsonResource
             'uuid' => $this->uuid,
             'group' => ($this->group_id) ? new GroupResource($this->group) : false,
             'user' => new UserResource($this->user),
-            'voted' => $this->isUpvotedBy(auth()->user()),
+            'voted' => (auth()->user() ? $this->isUpvotedBy(auth()->user()) : false),
             'upvotes'=> $this->upvotersCountForHumans(),
             'comments' => CommentResource::collection($this->comments),
             'comments_count' => $this->comments->count(),

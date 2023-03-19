@@ -1,7 +1,7 @@
 <template>
     <Head :title="group.name" />
     <AuthenticatedLayout>
-        <div class="flex justify-center mt-2 text-white max-w-lg w-full">
+        <div class="flex justify-center mt-2 text-white max-w-lg w-full mb-12 lg:mb-8">
             <div class="border p-6 rounded-lg max-w-md w-full ml-6 mr-6">
             <h1 class="text-center mb-3 text-2xl font-bold">Create Group</h1>
                 

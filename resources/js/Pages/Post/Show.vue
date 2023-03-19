@@ -1,7 +1,7 @@
 <template>
     <Head :title="post.title" />
     <AuthenticatedLayout>
-        <div class="p-5">
+        <div class="p-5 mb-12 lg:mb-0">
             <!-- Navbar -->
             <div class="rounded-lg max-w-xl w-full">
                 <div class="flex items-center p-2">

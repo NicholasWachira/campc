@@ -25,10 +25,11 @@ class ExploreController extends Controller
     		return $user->id;
     	});
 
+        $groups = GroupResource::collection(Group::take(4)->get());
 
     	$follows = (auth()->user()) ? auth()->user()->following->contains($ids->toArray()) : false;
 
-    	return inertia('Explore/Users/Index', compact('users', 'follows'));
+    	return inertia('Explore/Users/Index', compact('users', 'follows', 'groups'));
     }
 
     public function searchGroups(Request $request)
@@ -43,5 +44,12 @@ class ExploreController extends Controller
         $group = new GroupPostsResource(Group::where('uuid', $uuid)->first());
 
         return inertia('Explore/Groups/Show', compact('group'));
+    }
+
+    public function exploreGroups()
+    {
+        $groups = GroupResource::collection(Group::all());
+
+        return inertia('Explore/Groups', compact('groups'));
     }
 }

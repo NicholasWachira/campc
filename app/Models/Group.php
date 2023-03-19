@@ -42,7 +42,7 @@ class Group extends Model implements HasMedia
 
     public function members()
     {
-    	return $this->hasMany(Profile::class);
+    	return $this->belongsToMany(User::class);
     }
 
     public function registerMediaConversions(Media $media = null): void

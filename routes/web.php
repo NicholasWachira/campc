@@ -7,6 +7,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FollowsController;
 use App\Http\Controllers\VotingController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\JoinController;
 use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\UserNotificationsController;
 use App\Http\Controllers\UserProfileController;
@@ -39,6 +40,10 @@ Route::middleware('auth')->group(function () {
     // Follows Controller
     Route::post('/follow/{user}', [FollowsController::class, 'store'])->name('follows.store');
 
+    // Follows Controller
+    Route::post('/join/{group}', [JoinController::class, 'store'])->name('group.join');
+
+
 	// User Notifications
 	Route::get('/notifications', [UserNotificationsController::class, 'index'])->name('user.notifications');
 
@@ -51,6 +56,8 @@ Route::get('/follow/users', [HomeController::class, 'users'])->name('follow.user
 
 // Search Users
 Route::get('/explore/users', [ExploreController::class, 'searchUsers'])->name('explore.users');
+// Search Group
+Route::get('/explore/a/groups', [ExploreController::class, 'exploreGroups'])->name('explore.all.groups');
 
 // Explore Groups
 Route::get('/explore/groups', [ExploreController::class, 'searchGroups'])->name('explore.groups');

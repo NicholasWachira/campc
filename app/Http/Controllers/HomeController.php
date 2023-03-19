@@ -29,7 +29,7 @@ class HomeController extends Controller
 
     public function users(Request $request)
     {
-    	$users = UserResource::collection(User::with('media')->get());
+    	$users = UserResource::collection(User::where('id', '!=', auth()->user()->id)->with('media')->get());
         
     	return inertia('Auth/FollowUsers', compact('users'));
     }

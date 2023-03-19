@@ -14,8 +14,9 @@
 			</Link>
 		</div>
 		<div>
-			<Link :href="route('explore.groups')" class="flex">
-				<svg fill="#ffffff" height="18px" width="18px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+			<Link :href="route('explore.groups')">
+				<div class="flex">
+					<svg fill="#ffffff" height="18px" width="18px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
 					 viewBox="0 0 24 24" xml:space="preserve">
 					<g id="group">
 						<path d="M24,15.9c0-2.8-1.5-5-3.7-6.1C21.3,8.8,22,7.5,22,6c0-2.8-2.2-5-5-5c-2.1,0-3.8,1.2-4.6,3c0,0,0,0,0,0c-0.1,0-0.3,0-0.4,0
@@ -28,6 +29,8 @@
 							c0.6-0.5,1-1.1,1.3-1.8c0.1,0,0.2,0,0.4,0v0c2.9,0,5,2.1,5,4.9V18z"/>
 					</g>
 				</svg>
+				<!-- <svg width="15px" height="15px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none"><path fill="#ffffff" d="M8 3a5 5 0 100 10A5 5 0 008 3z" class="animate-pulse mb-12"/></svg> -->
+				</div>
 			</Link>
 		</div>
 		<div v-if="$page.props.auth.user">

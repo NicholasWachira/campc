@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
 use App\Models\User;
+use App\Models\Group;
 use App\Http\Resources\UserResource;
+use App\Http\Resources\GroupResource;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -39,8 +41,11 @@ class HandleInertiaRequests extends Middleware
             'notifications' => [
                 'count' => (auth()->user()) ? auth()->user()->unreadNotifications()->count() : false
             ],
+            'groups' => [
+                'group' => GroupResource::collection(Group::inRandomOrder()->take(4)->get()),
+            ],
             'users' => [
-                'user' => UserResource::collection(User::inRandomOrder()->take(5)->get()),
+                'user' => UserResource::collection(User::inRandomOrder()->take(4)->get()),
             ],
             'ziggy' => function () use ($request) {
                 return array_merge((new Ziggy)->toArray(), [
