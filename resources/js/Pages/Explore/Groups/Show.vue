@@ -21,8 +21,8 @@
                             </div>
                         </div>
                         <div class="mt-2 mb-2 flex justify-around">
-                            <p class="text-gray-300">Members: {{ group.members_count }}</p>
-                            <p class="text-gray-100 inline-flex">Location: <p class="ml-2 font-bold">{{ group.institution }}</p></p>
+                            <p class="text-gray-300 shrink-0">Members: {{ group.members_count }}</p>
+                            <p class="text-gray-100 inline-flex ml-5">Location: <p class="ml-2 font-bold">{{ group.institution }}</p></p>
                         </div>
                         <div class="mt-4 mb-2">
                             <p>{{ group.description }}</p>
@@ -35,9 +35,11 @@
                                 <p class="bg-gray-900 px-4 rounded-full">Whats New</p>
                             </div>
                             <form @submit.prevent="submit">
-                                <textarea v-model="form.title" type="text" class="w-full bg-gray-800 rounded-md resize-none" rows="2"></textarea>
+                                <textarea v-model="form.title" type="text" class="w-full bg-gray-800 rounded-md resize-none" rows="2" required=""></textarea>
+                                <InputError class="mt-2" :message="form.errors.title"/>
                                 <div class="flex items-center mt-4">
                                     <input type="file" class="block w-64 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" @input="form.image = $event.target.files[0]">
+                                    <InputError class="mt-2" :message="form.errors.image"/>
                                     <button type="submit" class="bg-gray-100 text-black font-extrabold ml-2 px-4 rounded-full shrink-0" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">Create Post</button>
                                 </div>  
                             </form>  
@@ -59,6 +61,7 @@
     import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
     import JoinGroupButton from '@/Components/JoinGroupButton.vue';
     import FollowButton from '@/Components/FollowButton.vue';
+    import InputError from '@/Components/InputError.vue';
     import ApplicationLogo from '@/Components/ApplicationLogo.vue';
     import Timeline from '@/Components/Timeline.vue';
     import Navbar from '@/Components/Navbar.vue';
@@ -74,7 +77,8 @@
             Link,
             useForm,
             Timeline,
-            FollowButton
+            FollowButton,
+            InputError
         },
         props: {
             group: Object

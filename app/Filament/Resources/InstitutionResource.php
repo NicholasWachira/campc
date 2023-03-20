@@ -26,6 +26,9 @@ class InstitutionResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\TextInput::make('short_name')
+                    ->required()
+                    ->maxLength(255),
             ]);
     }
 
@@ -34,6 +37,7 @@ class InstitutionResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('short_name'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')

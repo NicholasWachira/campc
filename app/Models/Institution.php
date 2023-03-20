@@ -10,7 +10,7 @@ class Institution extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'short_name'];
 
     public function users()
     {

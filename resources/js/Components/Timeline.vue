@@ -14,11 +14,8 @@
                       <p class="text-xs ml-5 shrink-0">{{ post.created_at }}</p>
                       </div>
                       <div class="ml-3 flex">
-                        <svg width="15px" height="15px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="12" cy="10" r="3" stroke="#D5D5D5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M19 9.75C19 15.375 12 21 12 21C12 21 5 15.375 5 9.75C5 6.02208 8.13401 3 12 3C15.866 3 19 6.02208 19 9.75Z" stroke="#D5D5D5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        <p class="text-xs uppercase text-gray-400 font-bold ml-1">{{ post.user.institution.short_name }}</p>
+                        <svg width="15px" height="15px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path fill="#D5D5D5" d="M224 128v704h576V128H224zm-32-64h640a32 32 0 0 1 32 32v768a32 32 0 0 1-32 32H192a32 32 0 0 1-32-32V96a32 32 0 0 1 32-32z"/><path fill="#D5D5D5" d="M64 832h896v64H64zm256-640h128v96H320z"/><path fill="#D5D5D5" d="M384 832h256v-64a128 128 0 1 0-256 0v64zm128-256a192 192 0 0 1 192 192v128H320V768a192 192 0 0 1 192-192zM320 384h128v96H320zm256-192h128v96H576zm0 192h128v96H576z"/></svg>
+                        <p class="text-xs uppercase text-gray-400 font-extrabold ml-1">{{ post.user.institution.short_name }}</p>
                       </div>
                 </div>
 
@@ -49,16 +46,8 @@
                         <Link :href="route('post.edit', post.uuid)">
                         <MenuItem v-slot="{ active }">
                           <button
-                            :class="[
-                              active ? 'bg-gray-600 text-white' : 'text-white',
-                              'group flex w-full items-center rounded-md px-2 py-2 text-sm',
-                            ]"
+                            class="hover:bg-gray-600 text-white w-full items-center rounded-md px-2 py-2 text-sm"
                           >
-                            <EditIcon
-                              :active="active"
-                              class="mr-2 h-5 w-5 text-violet-400"
-                              aria-hidden="true"
-                            />
                             Edit
                           </button>
                         </MenuItem>
@@ -67,16 +56,9 @@
                       <div class="px-1 py-1">
                         <MenuItem v-slot="{ active }">
                           <button
-                            :class="[
-                              active ? 'bg-red-300 text-white' : 'text-white',
-                              'group flex w-full items-center rounded-md px-2 py-2 text-sm',
-                            ]"
+                            class="hover:bg-red-300 text-white w-full items-center rounded-md px-2 py-2 text-sm"
+                            @click.prevent="destroy(post.uuid)"
                           >
-                            <DeleteIcon
-                              :active="active"
-                              class="mr-2 h-5 w-5 text-violet-400"
-                              aria-hidden="true"
-                            />
                             Delete
                           </button>
                         </MenuItem>
@@ -89,7 +71,7 @@
             </div>
             <div>
                 <Link :href="route('post.show', post.uuid)" class="hover:text-gray-300">
-                    <p class="pl-3 pr-3 text-md whitespace-pre-wrap">{{ post.title }}</p>
+                    <p class="pl-3 pr-3 mt-1 text-md whitespace-pre-wrap">{{ post.title }}</p>
                     <img :src="post.image" class="max-h-screen mt-2 rounded-2xl mx-auto">
                 </Link>
             </div>
@@ -116,7 +98,7 @@
 
 <script>
     import UpvoteButton from '@/Components/UpvoteButton.vue';
-    import { Link } from '@inertiajs/vue3';
+    import { Link, router } from '@inertiajs/vue3';
     
     import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
 
@@ -125,13 +107,24 @@
         components: {
             Link,
             UpvoteButton,
-            Menu, MenuButton, MenuItems, MenuItem
+            Menu, MenuButton, MenuItems, MenuItem,
+            router
         },
         props: {
             posts: {
                 type: Object,
                 required: true
             }
+        },
+        setup()
+        {
+            const destroy = (uuid) => {
+                if (confirm('Are you sure you want to delete this post?')) {
+                    router.delete(route('post.delete', uuid));
+                }
+            }
+
+            return { destroy }
         }
     }
 </script>

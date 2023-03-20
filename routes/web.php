@@ -93,6 +93,9 @@ Route::get('/post/{uuid}/edit', [PostController::class, 'edit'])->name('post.edi
 
 Route::patch('/post/{uuid}/update', [PostController::class, 'update'])->name('post.update');
 
+// Post Delete
+Route::delete('/post/{uuid}/delete', [PostController::class, 'delete'])->name('post.delete');
+
 // Comments
 Route::post('/post/{uuid}/comment', [CommentController::class, 'store'])->name('comment.store');
 

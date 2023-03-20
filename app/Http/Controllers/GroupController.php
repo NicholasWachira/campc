@@ -33,7 +33,7 @@ class GroupController extends Controller
             'owner_id' => auth()->user()->id
         ]);
 
-        return redirect()->route('Explore/Groups/Index');
+        return to_route('group.show', $group->uuid);
     }
 
     public function edit($uuid)

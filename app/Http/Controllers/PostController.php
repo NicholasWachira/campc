@@ -44,4 +44,15 @@ class PostController extends Controller
 
         return back();
     }
+
+    public function delete($uuid)
+    {
+        $post = Post::where('uuid', $uuid)->first();
+
+        $post->clearMediaCollection('post-image');
+
+        $post->delete();
+
+        return to_route('home');
+    }
 }
