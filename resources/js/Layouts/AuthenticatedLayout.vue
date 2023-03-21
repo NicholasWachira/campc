@@ -1,11 +1,11 @@
 <template>
     <div>
-        <div class="min-h-screen bg-gray-800 dark:bg-gray-800">
+        <div class="min-h-screen bg-gray-900 dark:bg-gray-900">
             <!-- App Logo -->
             <div class="flex justify-center items-center pt-2">
                 <div class="max-w-7xl w-full">
                     <Link :href="route('home')">
-                        <div class="flex justify-center items-center gap-x-2 border-2 p-1 rounded-md text-white w-48 mx-auto hover:bg-gray-800 mt-5">
+                        <div class="flex justify-center items-center gap-x-2 border-2 p-1 rounded-md text-white w-40 mx-auto hover:bg-gray-800 mt-5">
                             <p class="text-xs uppercase">Campus</p>
                             <p class="text-xs font-extrabold uppercase">Connect</p>
                         </div>
@@ -19,13 +19,13 @@
                 </div>
             </header>
 
-            <main class="flex justify-center text-white mx-auto">
+            <main class="flex justify-center overflow-x-hidden text-white mx-auto">
                 <navbar/>
                     <slot />
                 <trending/>
             </main>
 
-            <div @click="openModal" class="bg-gray-900 p-5 fixed bottom-20 right-8 text-white text-2xl font-extrabold h-10 w-10 lg:hidden flex justify-center items-center rounded-full text-center md:hidden  lg:hidden xl:hidden">
+            <div @click="openModal" class="bg-gray-700 p-5 fixed bottom-20 right-8 text-white text-2xl font-extrabold h-10 w-10 lg:hidden flex justify-center items-center rounded-full text-center md:hidden  lg:hidden xl:hidden">
                 +
             </div>
 
@@ -61,10 +61,10 @@
                         >
                           <form @submit.prevent="submit">
                             <div class="mt-1">
-                              <textarea class="bg-gray-900 text-white rounded-lg resize-none" rows="6" cols="40" v-model="form.title" required></textarea>
+                              <textarea class="bg-gray-900 text-white rounded-lg resize-none" rows="3" cols="33" v-model="form.title" required></textarea>
                             </div>
                             <div class="align-left p-2">
-                              <input type="file" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" @input="form.image = $event.target.files[0]">
+                              <input type="file" class="block w-full text-sm text-white border border-gray-300 rounded-lg cursor-pointer bg-gray-800 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" @input="form.image = $event.target.files[0]">
                             </div>
                             <div class="mt-4">
                               <button

@@ -28,7 +28,7 @@ class PostResource extends JsonResource
             'comments' => CommentResource::collection($this->comments),
             'comments_count' => $this->comments->count(),
             'image' => $this->getFirstMediaUrl('post-image'),
-            'created_at' => $this->created_at->diffForHumans(),
+            'created_at' => $this->created_at->diffForHumans(null, true, true),
         ];
     }
 }

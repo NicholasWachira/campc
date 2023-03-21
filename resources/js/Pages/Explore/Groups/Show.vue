@@ -1,8 +1,8 @@
 <template>
     <Head :title="group.name" />
     <AuthenticatedLayout>
-        <div class="max-w-lg w-full m-4 rounded-2xl">
-            <div class="h-screen overflow-y-scroll no-scrollbar m-4">
+        <div class="max-w-lg w-full rounded-2xl h-screen overflow-x-hidden overflow-y-scroll no-scrollbar mt-5">
+            <div class="m-4">
                 <div class="mx-auto">
                     <div class="">
                         <div class="flex items-center justify-between p-2">
@@ -11,18 +11,22 @@
                                     <img :src="group.avatar" @error="$event.target.src='/image/abc.png'" width="70" height="70" class="rounded-full">
                                 </div>
                                 <div class="ml-4">
-                                    <h1 class="text-center text-xl font-bold">{{ group.name }}</h1>
+                                    <h1 class="text-md font-bold shrink-0">{{ group.name }}</h1>
                                     <h1 class="text-xs">@{{ group.username }}</h1>
                                 </div>
                             </div>
-                            <div class="flex flex-col ml-7">
-                                <Link :href="route('group.edit', group.uuid)" class="bg-gray-600 text-center px-4 py-1 rounded-full hover:bg-gray-700" v-show="group.owner_id == $page.props.auth.user.id">Edit Page</Link>
-                                <JoinGroupButton v-show="!group.member" :groupId="group.id" :member="group.member" v-if="group.owner_id != $page.props.auth.user.id"/>
+                            <div class="flex flex-col">
+                                <div v-if="$page.props.auth.user.id">
+                                    <Link :href="route('group.edit', group.uuid)" class="bg-gray-600 text-center px-4 py-1 rounded-full hover:bg-gray-700" v-if="group.owner_id == $page.props.auth.user.id">Edit Page</Link>
+                                </div>
+                                <div v-if="$page.props.auth.user.id">
+                                    <JoinGroupButton v-show="!group.member" :groupId="group.id" :member="group.member" v-if="group.owner_id != $page.props.auth.user.id"/>
+                                </div>
                             </div>
                         </div>
                         <div class="mt-2 mb-2 flex justify-around">
                             <p class="text-gray-300 shrink-0">Members: {{ group.members_count }}</p>
-                            <p class="text-gray-100 inline-flex ml-5">Location: <p class="ml-2 font-bold">{{ group.institution }}</p></p>
+                            <p class="text-gray-100 inline-flex ml-5">Location: <p class="ml-2 font-bold uppercase">{{ group.institution }}</p></p>
                         </div>
                         <div class="mt-4 mb-2">
                             <p>{{ group.description }}</p>
@@ -30,7 +34,7 @@
                         <hr>
 
                         <!-- Create Post -->
-                        <div class="border p-2 mt-2 rounded-lg" v-if="group.member">
+                        <div class="border p-2 mt-2 rounded-lg m-2" v-if="group.member">
                             <div class="w-32 m-2 animate-pulse">
                                 <p class="bg-gray-900 px-4 rounded-full">Whats New</p>
                             </div>
@@ -38,16 +42,14 @@
                                 <textarea v-model="form.title" type="text" class="w-full bg-gray-800 rounded-md resize-none" rows="2" required=""></textarea>
                                 <InputError class="mt-2" :message="form.errors.title"/>
                                 <div class="flex items-center mt-4">
-                                    <input type="file" class="block w-64 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" @input="form.image = $event.target.files[0]">
+                                    <input type="file" class="block w-64 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-900 text-white dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" @input="form.image = $event.target.files[0]">
                                     <InputError class="mt-2" :message="form.errors.image"/>
                                     <button type="submit" class="bg-gray-100 text-black font-extrabold ml-2 px-4 rounded-full shrink-0" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">Create Post</button>
                                 </div>  
                             </form>  
                         </div>
-
                         <div class="m-3">
                             <h1 class="text-center font-bold">Posts</h1>
-
                             <timeline :posts="group.posts"/>
                         </div>
                     </div>

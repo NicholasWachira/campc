@@ -33,7 +33,8 @@ const submit = () => {
             {{ status }}
         </div>
 
-        <form @submit.prevent="submit">
+        <div>
+            <form @submit.prevent="submit">
             <div>
                 <InputLabel for="email" value="Email" />
 
@@ -44,7 +45,7 @@ const submit = () => {
                     v-model="form.email"
                     required
                     autofocus
-                    autocomplete="username"
+                    autocomplete="email"
                 />
 
                 <InputError class="mt-2" :message="form.errors.email" />
@@ -65,7 +66,7 @@ const submit = () => {
                 <InputError class="mt-2" :message="form.errors.password" />
             </div>
 
-            <div class="block mt-4">
+            <div class="block mt-4 shrink-0">
                 <label class="flex items-center">
                     <Checkbox name="remember" v-model:checked="form.remember" />
                     <span class="ml-2 text-sm text-white dark:text-gray-400">Remember me</span>
@@ -91,5 +92,6 @@ const submit = () => {
                 </PrimaryButton>
             </div>
         </form>
+        </div>
     </GuestLayout>
 </template>

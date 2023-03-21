@@ -1,7 +1,7 @@
 <template>
     <Head title="Create Group" />
     <AuthenticatedLayout>
-        <div class="flex justify-center mt-2 text-white max-w-lg w-full">
+        <div class="flex justify-center mt-2 text-white max-w-lg w-full lg:mb-0 mb-12 ">
             <div class="border p-6 rounded-lg max-w-md w-full ml-6 mr-6">
             <h1 class="text-center mb-3 text-2xl font-bold">Create Group</h1>
               <form @submit.prevent="submit">
@@ -18,7 +18,7 @@
                 <div class="mt-4">
                     <InputLabel for="Institution" value="Institution" />
 
-                    <select id="institution" class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm mt-1 block w-full" v-model="form.institution_id">
+                    <select id="institution" class="border-gray-300 bg-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm mt-1 block w-full" v-model="form.institution_id">
                       <template v-for="(institution, index) in institutions" :key="index">
                         <option :value="institution.id">{{ institution.name }}</option>  
                       </template>

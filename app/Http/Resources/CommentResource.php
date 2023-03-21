@@ -20,7 +20,7 @@ class CommentResource extends JsonResource
             'user'=> new UserResource($this->user),
             'message'=> $this->message,
             'image' => $this->getFirstMediaUrl('comment-image'),
-            'created_at' => $this->created_at->diffForHumans(),
+            'created_at' => $this->created_at->diffForHumans(null, true, true),
         ];
     }
 }

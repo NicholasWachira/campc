@@ -1,9 +1,9 @@
 <template>
     <Head :title="user.name" />
     <AuthenticatedLayout>
-        <div class="flex ml-10 mr-10 mt-5 text-white">
-            <div class="max-w-2xl w-full mx-auto text-white">
-                <div class="border rounded-lg p-5">
+        <div class="flex ml-5 mr-5 mt-5 text-white">
+            <div class="max-w-lg w-full mx-auto text-white">
+                <div class="border rounded-2xl p-5">
                     <img :src="user.avatar" @error="$event.target.src='/image/abc.png'" width="100" heigth="100" class="rounded-full mx-auto">
                     <div class="flex justify-center items-center mt-3">
                         <p class="text-white text-center text-lg font-bold">{{ user.name }}</p>
@@ -11,7 +11,7 @@
                     </div>
                     <div class="flex justify-center gap-x-8">
                         <div class="flex text-center mt-1">
-                            <svg width="18px" height="18px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="18px" height="18px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="shrink-0">
                             <circle cx="12" cy="10" r="3" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M19 9.75C19 15.375 12 21 12 21C12 21 5 15.375 5 9.75C5 6.02208 8.13401 3 12 3C15.866 3 19 6.02208 19 9.75Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
@@ -19,8 +19,7 @@
                         </div>
                         <p class="text-center mt-1 text-sm font-thin">@{{ user.username }}</p>
                     </div>
-                    <p class="text-center mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labor deserunt mollit anim id est laborum.</p>
+                    <p class="text-center mt-2 font-thin">Lorem ipsum dolor sit amet, consectetur</p>
                     <div class="flex justify-center mt-2 gap-x-20">
                         <div class="flex items-center">
                             <p class="font-bold">Followers </p>
@@ -38,7 +37,7 @@
                 </div>
                 <!-- Timeline -->
                 <h1 class="text-center text-xl font-bold mt-5">Timeline</h1>
-                <div class="flex justify-center">
+                <div class="">
                     <timeline :posts="user.posts"/>
                 </div>
 

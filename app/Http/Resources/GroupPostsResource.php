@@ -25,7 +25,7 @@ class GroupPostsResource extends JsonResource
             'members_count'=> $this->members->count(),
             'description'=> $this->description,
             'institution_id'=> $this->institution->id,
-            'institution' => $this->institution->name,
+            'institution' => $this->institution->short_name,
             'avatar' => $this->getFirstMediaUrl('avatar', 'thumb'),
             'posts' => PostResource::collection($this->posts),
         ];

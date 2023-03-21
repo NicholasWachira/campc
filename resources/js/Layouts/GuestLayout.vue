@@ -4,7 +4,7 @@ import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-900 dark:bg-gray-900">
+    <div class="min-h-screen flex flex-col sm:justify-center items-center p-5 bg-gray-900 dark:bg-gray-900">
         <div>
             <Link href="/">
                 <ApplicationLogo class="font-extrabold text-white uppercase border border-2 p-1 rounded-md"/>
