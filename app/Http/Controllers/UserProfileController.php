@@ -51,7 +51,7 @@ class UserProfileController extends Controller
         $user = User::where('username', $username)->first();
 
         $request->validate([
-            'avatar' => 'nullable',
+            'avatar' => 'nullable|max:20000',
         ]);
         
         $user->clearMediaCollection('avatar');

@@ -1,14 +1,14 @@
 <template>
     <Head :title="user.name" />
     <AuthenticatedLayout>
-        <div class="flex justify-center mt-2 text-white max-w-lg w-full">
-            <div class="border p-6 rounded-lg max-w-md w-full ml-6 mr-6">
+        <div class="flex mt-3 text-white max-w-lg">
+            <div class="border p-3 lg:p-5 rounded-lg ml-10 mr-10 mb-16 lg:mb-0">
             <h1 class="text-center mb-3 text-2xl font-bold">Edit Profile</h1>
                 
                 <form @submit.prevent="uploadAvatar">
                     <img :src="user.avatar" @error="$event.target.src='/image/abc.png'" class="mx-auto rounded-full" width="100" height="100">
                     <div class="flex justify-center">
-                        <input type="file" class="mt-2 mb-2 border rounded-2xl" @input="form2.avatar = $event.target.files[0]" required="">
+                        <input type="file" class="mt-2 mb-2 border rounded-lg" @input="form2.avatar = $event.target.files[0]" required="">
                     </div>
                     <div class="text-red-700 px-2 mt-2">{{ form2.errors.avatar}}</div>
 

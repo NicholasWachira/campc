@@ -25,7 +25,7 @@
                 <trending/>
             </main>
 
-            <div @click="openModal" class="bg-gray-700 p-5 fixed bottom-20 right-8 text-white text-2xl font-extrabold h-10 w-10 lg:hidden flex justify-center items-center rounded-full text-center md:hidden  lg:hidden xl:hidden">
+            <div v-show="$page.props.auth.user" @click="openModal" class="bg-gray-700 p-5 fixed bottom-20 right-8 text-white text-2xl font-extrabold h-10 w-10 lg:hidden flex justify-center items-center rounded-full text-center md:hidden  lg:hidden xl:hidden">
                 +
             </div>
 

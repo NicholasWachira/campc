@@ -25,7 +25,7 @@ class PostStoreRequest extends FormRequest
     {
         return [
             'title' => 'nullable',
-            'image' => 'image|nullable',
+            'image' => 'image|nullable|max:20000',
         ];
     }
 }

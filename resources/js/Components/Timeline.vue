@@ -1,5 +1,5 @@
 <template>
-	<div class="rounded-lg max-w-md h-screen overflow-x-hidden overflow-y-scroll no-scrollbar mb-12 lg:mb-0 mt-5">
+	<div class="max-w-md h-screen overflow-x-hidden overflow-y-scroll no-scrollbar mb-12 lg:mb-0 mt-5">
         <div v-for="(post, index) in posts" :key="index" class="mt-2">
             <div class=" flex flex-col">
                 <div class="flex items-center">
