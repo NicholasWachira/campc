@@ -1,7 +1,7 @@
 <template>
     <Head :title="user.name" />
     <AuthenticatedLayout>
-        <div class="flex mt-3 text-white max-w-lg">
+        <div class="mt-3 text-white max-w-xl">
             <div class="border p-3 lg:p-5 rounded-lg ml-10 mr-10 mb-16 lg:mb-0">
             <h1 class="text-center mb-3 text-2xl font-bold">Edit Profile</h1>
                 
