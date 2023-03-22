@@ -6,7 +6,7 @@
             <div class="rounded-lg lg:max-w-lg max-w-xs">
                 <div>
                     <div class="flex justify-end mt-2 mb-2">
-                        <button @click.prevent="submit()" type="submit" class="bg-white text-gray-900 px-5 py-1 rounded-2xl font-bold" :disabled="form.processing" :class="{ 'opacity-25': form.processing }">Save</button>
+                        <button @click.prevent="submit()" type="submit" class="bg-white hover:bg-gray-300 text-gray-900 px-5 py-1 rounded-2xl font-bold" :disabled="form.processing" :class="{ 'opacity-25': form.processing }">Save</button>
                     </div>
                 </div>
                 <div class="flex items-center mb-3">
@@ -27,7 +27,7 @@
                 </div>
                 </div>
                 <div class="flex flex-col">
-                    <textarea class="whitespace-pre-wrap mx-auto bg-gray-900 rounded-2xl w-full" cols="35" rows="3" v-model="form.title"/>
+                    <textarea class="resize-none whitespace-pre-wrap mx-auto bg-gray-900 rounded-2xl w-full" cols="35" rows="3" v-model="form.title"/>
 
                     <div class="mt-3 max-w-md">
                         <img :src="post.image" class="rounded">

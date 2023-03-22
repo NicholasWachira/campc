@@ -33,6 +33,8 @@ class GroupController extends Controller
             'owner_id' => auth()->user()->id
         ]);
 
+        $group->members()->attach($request->user());
+
         return to_route('group.show', $group->uuid);
     }
 

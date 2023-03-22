@@ -1,5 +1,5 @@
 <template>
-	<button class="flex justify-center items-center hover:bg-gray-900 mt-3 px-4 py-1 bg-gray-700 rounded-full w-32" @click="joinGroup" v-text="buttonText">
+	<button class="flex justify-center items-center hover:bg-gray-700 mt-3 px-4 py-1 bg-gray-600 rounded-full w-32" @click="joinGroup" v-text="buttonText">
     </button>
 </template>
 

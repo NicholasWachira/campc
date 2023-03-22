@@ -36,13 +36,24 @@
                         <!-- Create Post -->
                         <div class="border p-2 mt-2 rounded-lg m-2" v-if="group.member">
                             <div class="w-32 m-2 animate-pulse">
-                                <p class="bg-gray-900 px-4 rounded-full">Whats New</p>
+                                <p class="bg-gray-800 px-4 rounded-full">Whats New</p>
                             </div>
                             <form @submit.prevent="submit">
                                 <textarea v-model="form.title" type="text" class="w-full bg-gray-800 rounded-md resize-none" rows="2" required=""></textarea>
                                 <InputError class="mt-2" :message="form.errors.title"/>
-                                <div class="flex items-center mt-4">
-                                    <input type="file" class="block w-64 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-900 text-white dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" @input="form.image = $event.target.files[0]">
+                                <div class="flex justify-between items-center mt-4 mr-2">
+                                    <input
+                                      type="file"
+                                      id="formImage"
+                                      class="hidden"
+                                       @input="form.image = $event.target.files[0]"
+                                    >
+
+                                    <label for="formImage" class="cursor-pointer">
+                                      <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3 6C3 4.34315 4.34315 3 6 3H18C19.6569 3 21 4.34315 21 6V16.999V17.001V18C21 19.6569 19.6569 21 18 21H6C4.34315 21 3 19.6569 3 18V14V6ZM19 6V14.5858L15.7071 11.2929C15.3166 10.9024 14.6834 10.9024 14.2929 11.2929L13 12.5858L9.20711 8.79289C8.81658 8.40237 8.18342 8.40237 7.79289 8.79289L5 11.5858V6C5 5.44772 5.44772 5 6 5H18C18.5523 5 19 5.44772 19 6ZM5 18V14.4142L8.5 10.9142L12.2929 14.7071C12.6834 15.0976 13.3166 15.0976 13.7071 14.7071L15 13.4142L19 17.4142V18C19 18.5523 18.5523 19 18 19H6C5.44772 19 5 18.5523 5 18ZM14.5 10C15.3284 10 16 9.32843 16 8.5C16 7.67157 15.3284 7 14.5 7C13.6716 7 13 7.67157 13 8.5C13 9.32843 13.6716 10 14.5 10Z" fill="#D5D5D5"/>
+                                        </svg>
+                                  </label>
                                     <InputError class="mt-2" :message="form.errors.image"/>
                                     <button type="submit" class="bg-gray-100 text-black font-extrabold ml-2 px-4 rounded-full shrink-0" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">Create Post</button>
                                 </div>  
@@ -83,7 +94,7 @@
             InputError
         },
         props: {
-            group: Object
+            group: Object,
         },
         setup(props)
         {

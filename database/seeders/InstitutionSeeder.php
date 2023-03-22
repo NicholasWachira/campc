@@ -18,8 +18,14 @@ class InstitutionSeeder extends Seeder
         $institutions = [
         	[
         		'id'=> 1,
-        		'name'=>'Mmu',
-        	]
+        		'name'=>'Multimedia University',
+                'short_name'=>'Mmu',
+        	],
+            [
+                'id'=> 2,
+                'name'=>'Jomo Kenyatta University of Agriculture and Technology',
+                'short_name'=>'Jkuat',
+            ]
         ];
 
         Institution::insert($institutions);

@@ -7,15 +7,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Image\Manipulations;
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\HasMedia;
 use Laravel\Sanctum\HasApiTokens;
 use LaravelInteraction\Vote\Concerns\Voter;
+use Filament\Models\Contracts\FilamentUser;
 
-class User extends Authenticatable implements HasMedia
+class User extends Authenticatable implements HasMedia, FilamentUser
 {
-    use HasApiTokens, HasFactory, Notifiable, InteractsWithMedia, Voter;
+    use HasApiTokens, HasFactory, HasRoles, Notifiable, InteractsWithMedia, Voter;
 
     /**
      * The attributes that are mass assignable.
@@ -59,6 +61,11 @@ class User extends Authenticatable implements HasMedia
 
             $user->following()->toggle($user->profile);
         });
+    }
+
+    public function canAccessFilament(): bool
+    {
+        return $this->can('admin_access');
     }
 
     public function posts()

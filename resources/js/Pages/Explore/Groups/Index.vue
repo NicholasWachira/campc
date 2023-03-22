@@ -5,7 +5,7 @@
             <div class="h-screen overflow-y-scroll no-scrollbar ml-3 mr-3 mt-1">
                 <div class="mx-auto">
                     <div>
-                        <div class="flex justify-center mt-3">
+                        <div class="flex justify-center mt-3" v-if="$page.props.auth.user">
                             <Link :href="route('group.create')" class="bg-gray-700 px-4 py-1 rounded-full hover:bg-gray-900">Create Group</Link>
                         </div>
                         <div class="p-2">
