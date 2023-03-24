@@ -19,7 +19,7 @@
                 </Link>
                 <Link :href="route('explore.users')">
                     <li class="flex items-center hover:bg-gray-700 rounded-full p-2" href="#">
-                        <svg width="19px" height="19px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="22px" height="22px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="10" cy="10" r="6" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M14.5 14.5L19 19" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
@@ -28,7 +28,7 @@
                 </Link>
                 <Link :href="route('explore.groups')">
                     <li class="flex items-center hover:bg-gray-700 rounded-full p-2" href="#">
-                        <svg fill="#ffffff" height="15px" width="15px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                    <svg fill="#ffffff" height="15px" width="15px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
                      viewBox="0 0 24 24" xml:space="preserve">
                     <g id="group">
                         <path d="M24,15.9c0-2.8-1.5-5-3.7-6.1C21.3,8.8,22,7.5,22,6c0-2.8-2.2-5-5-5c-2.1,0-3.8,1.2-4.6,3c0,0,0,0,0,0c-0.1,0-0.3,0-0.4,0
@@ -136,9 +136,6 @@
                               </button>
                             </div>
                           </form>
-
-                          <!-- <PostImagePreview :image="previewImage"/> -->
-
                         </DialogPanel>
                       </TransitionChild>
                     </div>

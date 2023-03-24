@@ -36,7 +36,7 @@ class HandleInertiaRequests extends Middleware
     {
         return array_merge(parent::share($request), [
             'auth' => [
-                'user' => $request->user() ?? '',
+                'user' => (auth()->user()) ? new UserResource($request->user()) : false,
             ],
             'notifications' => [
                 'count' => (auth()->user()) ? auth()->user()->unreadNotifications()->count() : false

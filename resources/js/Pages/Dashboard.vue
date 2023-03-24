@@ -1,7 +1,9 @@
 <template>
     <Head title="Home" />
     <AuthenticatedLayout>
-        <timeline :posts="posts" class="m-4"/>
+        <div class="mb-6 lg:mb-3">
+            <timeline :posts="posts" class="m-4"/>
+        </div>
     </AuthenticatedLayout>
 </template>
 

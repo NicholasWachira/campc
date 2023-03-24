@@ -37,6 +37,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    // Follow Users
+    Route::get('/follow/users', [HomeController::class, 'users'])->name('follow.users');
+
     // Follows Controller
     Route::post('/follow/{user}', [FollowsController::class, 'store'])->name('follows.store');
 
@@ -50,9 +53,6 @@ Route::middleware('auth')->group(function () {
 	// Post Upvoting
 	Route::post('/p/{uuid}/upvote', [VotingController::class, 'upvotePost'])->name('post.upvote');
 });
-
-// Follow Users
-Route::get('/follow/users', [HomeController::class, 'users'])->name('follow.users');
 
 // Search Users
 Route::get('/explore/users', [ExploreController::class, 'searchUsers'])->name('explore.users');
