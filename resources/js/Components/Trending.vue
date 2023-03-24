@@ -10,7 +10,7 @@
             <div class="mt-3 mb-3">
                 <h1 class="text-center font-bold">Users</h1>
                 <div class="flex mt-4" v-for="(user, index) in $page.props.users.user" :key="index">
-                    <img :src="user.avatar" @error="$event.target.src='/image/abc.png'" class="rounded-full w-12 h-12">
+                    <img :src="user.avatar" @error="$event.target.src='/image/abc.png'" class="rounded-full w-12">
                     <div>
                         <p class="shrink-0 ml-3 mr-4 font-bold hover:underline">
                             <Link :href="route('user.profile', user.username)">{{ user.name }}</Link>
@@ -24,7 +24,7 @@
             <div class="mt-5 mb-2">
                 <h1 class="text-center font-bold">Groups</h1>
                 <div class="flex mt-4" v-for="(group, index) in $page.props.groups.group" :key="index">
-                    <img :src="group.avatar" @error="$event.target.src='/image/abc.png'" class="rounded-full w-12 h-12">
+                    <img :src="group.avatar" @error="$event.target.src='/image/abc.png'" class="rounded-full w-12">
                     <div>
                         <p class="shrink-0 ml-3 mr-4 font-bold hover:underline">
                             <Link :href="route('group.show', group.uuid)">{{ group.name }}</Link>
