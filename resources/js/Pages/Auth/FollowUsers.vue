@@ -24,7 +24,7 @@
         </div>
 
         <div class="text-white hover:bg-gray-700 p-2 mt-3 mb-10 rounded-full">
-            <Link :href="route('home')">Next >></Link>
+            <Link :href="route('users.intrests')">Next >></Link>
         </div>
     </div>   
 </template>

@@ -11,6 +11,7 @@ use App\Http\Controllers\JoinController;
 use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\UserNotificationsController;
 use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\IntrestsController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -39,6 +40,9 @@ Route::middleware('auth')->group(function () {
 
     // Follow Users
     Route::get('/follow/users', [HomeController::class, 'users'])->name('follow.users');
+
+    // Users Intrests
+    Route::get('/user/intrests', [IntrestsController::class, 'index'])->name('users.intrests');
 
     // Follows Controller
     Route::post('/follow/{user}', [FollowsController::class, 'store'])->name('follows.store');
